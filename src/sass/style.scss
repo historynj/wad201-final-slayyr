@@ -1,0 +1,12 @@
+@use '_reset';
+@use '_utils';
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
