@@ -1,3 +1,5 @@
+@use '_variables' as *;
+
 .flex {
     display: flex;
 }
@@ -8,4 +10,14 @@
 
 .hidden {
     display: none;
+}
+
+.invisiable {
+    visibility: hidden;
+}
+
+@media (max-width: $mobile) {
+    .flex {
+        flex-direction: column;
+    }
 }

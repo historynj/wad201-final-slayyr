@@ -4,58 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carla Beauty</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/home.css" />
 </head>
-<body>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">My Work</a>
-        <a href="#">Services</a>
-        <a href="#">Classes</a>
-        <a href="#">
-            <img src="./images/logo/logo.png" alt="Carla Beauty Logo" />
-        </a>
-        <a href="#">Beauty Tips</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">
-            <img src="" alt="" />
-        </a>
-    </nav>
+<body id="body">
+    <!-- nav loaded by script.js -->
     <main>
-        <header>
-            <img src="./images/home/hero.png" alt="A photo of bride in dress" />
-            <div>
-                <h1>Carla</h1>
+        <header class="hero">
+            <img class="hero__img" src="./images/home/hero.png" alt="A photo of bride in dress" />
+            <div class="hero__cover">
+                <h1>Carla Beauty</h1>
                 <p>Vancouver's go-to makeup and hairstyle, with a Brazilian twist</p>
-                <button>Free Consultation</button>
+                <a class="btn btn--white btn--scroll" href="#contact">Free Consultation</a>
             </div>
         </header>
-        <section>
-            <div>
-                <div>
-                    <div>
-                        <img src="./images/home/professional.png" alt="A photo of smiling woman" />
-                        <div>
-                            <img src="./images/icons/instagram-white.png" alt="Instagram icon" />
-                            <span>carlabeatrizs_</span>
-                        </div>
+        <section class="about">
+            <div class="about__info flex">
+                <div class="about__info__card line-point">
+                    <div class="about__info__card__image">
+                        <img src="./images/home/professional.jpg" alt="A photo of smiling woman" />
                     </div>
-                    <div>
-                        <img src="./images/home/loreal.png" />
+                    <div class="about__info__card__body">
+                        <div class="about__info__card__body__loreal">
+                            <img src="./images/home/loreal.png" />
+                        </div>
                         <p>Official Certified Professional</p>
                     </div>
                 </div>
-                <div>
-                    <img src="./images/logo-pink.png" alt="Pink colored Carla Beauty Logo" />
+                <div class="about__info__content">
+                    <div class="about__info__content__logo">
+                        <img src="./images/logo/logo-pink.png" alt="Pink colored Carla Beauty Logo" />
+                    </div>
                     <h2>Professional Makeup & Hairstyle Artist</h2>
                     <p>10+ years creating stunning looks for weddings and specia loccasions.</p>
-                    <button>About Me</button>
-                    <span>CarlaBeatriz</span>
+                    <div class="about__info__content__bottom">
+                        <a class="btn" href="./about.html">About Me</a>
+                        <span class="about__info__content__bottom__handwriting">CarlaBeatriz</span>
+                    </div>
                 </div>
             </div>
-            <div>
-                <h5>Our Brands</h5>
-                <ul>
+            <div class="about__brands">
+                <h5 class="about__brands__title">Our Brands</h5>
+                <ul class="about__brands__list">
                     <li>
                         <img src="./images/home/brand-mac.png" alt="Mac logo" />
                     </li>
@@ -68,27 +58,27 @@
                     <li>
                         <img src="./images/home/brand-laura.png" alt="Laura Mercier logo" />
                     </li>
-                    <li>
-                        <img src="./images/home/brand-mac.png" alt="Mac logo" />
-                    </li>
-                    <li>
-                        <img src="./images/home/brand-mac.png" alt="Mac logo" />
-                    </li>
-                    <li>
-                        <img src="./images/home/brand-mac.png" alt="Mac logo" />
-                    </li>
-                    <li>
+                    <li class="sm">
                         <img src="./images/home/brand-charlotte.png" alt="Charlotte Tilbury logo" />
+                    </li>
+                    <li class="sm">
+                        <img src="./images/home/brand-tarte.png" alt="Tarte logo" />
+                    </li>
+                    <li class="sm">
+                        <img src="./images/home/brand-anastasia.png" alt="Anastasia logo" />
+                    </li>
+                    <li class="sm">
+                        <img src="./images/home/brand-kryolan.png" alt="Kryolan logo" />
                     </li>
                 </ul>
             </div>
         </section>
         <section>
             <div>
-                <h2>Your are a star</h2>
+                <h2>You are a star</h2>
                 <hr />
                 <p>Shine effortlessly, embrace your unique features with absolute confidence.</p>
-                <button>My Work</button>
+                <button class="btn">My Work</button>
             </div>
             <ul>
                 <li>
@@ -125,14 +115,14 @@
                 <h2>Makeup & hairstyle</h2>
                 <hr />
                 <p>We offer fully customizable plan to meet your unique requirements.</p>
-                <button>Get a Quote</button>
+                <button class="btn">Get a Quote</button>
             </div>
             <ul>
                 <li>
                     <img src="./images/home/party.png" alt="Woman with makeup" />
                     <span>Party</span>
                 </li>
-                <li>
+                <li class="line-point">
                     <img src="./images/home/wedding.png" alt="Woman with makeup" />
                     <span>Wedding</span>
                 </li>
@@ -161,7 +151,7 @@
                 </ul>
                 <img src="./images/home/101.png" alt="Photo of professional makeup artist" />
             </div>
-            <button>All Classes</button>
+            <button class="btn">All Classes</button>
         </section>
         <section>
             <h2>DIY Beauty Corner</h2>
@@ -188,57 +178,15 @@
                     <p>How to do stunning hair in 3min</p>
                 </li>
             </ul>
-            <button>More Beauty Tips</button>
+            <button class="btn">More Beauty Tips</button>
         </section>
-        <section>
+        <section id="contact">
             <h2>Let's Talk</h2>
             <p>Check availability, pricing, and schedule a meeting for your special day or our academy services.</p>
             <form></form>
         </section>
     </main>
-    <footer>
-        <div>
-            <img src="./images/logo/logo.png" alt="Carla Beauty logo" />
-            <p>Expert makeup and hairstyle studio</p>
-            <ul>
-                <li>
-                    <img src="./images/icons/phone-primary.png" alt="Instagram logo" />
-                </li>
-                <li>
-                    <img src="./images/icons/whatsapp-primary.png" alt="Instagram logo" />
-                </li>
-                <li>
-                    <img src="./images/icons/instagram-primary.png" alt="Instagram logo" />
-                </li>
-            </ul>
-        </div>
-        <ul>
-            <li>
-                <a href="#">Home</a>
-            </li>
-            <li>
-                <a href="#">My Work</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Home</a>
-            </li>
-            <li>
-                <a href="#">Classes</a>
-            </li>
-            <li>
-                <a href="#">Beauty Tips</a>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-        <p>Copyright 2024, Carla Beauty</p>
-    </footer>
+    <!-- Footer loaded by script.js -->
+    <script type="text/javascript" src="./js/script.js"></script>
 </body>
 </html>

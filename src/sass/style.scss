@@ -1,12 +1,83 @@
+@use '_variables' as *;
+
 @use '_reset';
+
+@use '_nav';
+@use '_footer';
+@use '_message';
+
 @use '_utils';
 
-ul,
-ol {
-  list-style: none;
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/juliette-3');
+
+
+html {
+    scroll-behavior: smooth;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+body {
+    position: relative;
+    font-family: 'Figtree', sans-serif;
+    color: $primary;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    background-color: $pale-white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Baskervville', serif;
+    font-weight: inherit;
+    letter-spacing: 1.5px;
+}
+
+// components
+.btn {
+    font-family: 'Baskervville', serif;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    border: 1px solid $primary;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        color: $white;
+        background-color: $dark-pink;
+        border-color: $dark-pink;
+    }
+
+    &--white {
+        color: $white;
+        border-color: $white;
+        
+
+        &:hover {
+            color: $black;
+            background-color: $pale-white;
+            border-color: $pale-white;
+            opacity: 0.6;
+        }
+    }
+}
+
+.line-point {
+    position: relative;
+
+    &::before {
+        $offset: 1.25rem;
+        $mask: 0 $offset, calc(100% - $offset - 2px) $offset, calc(100% - $offset - 2px) 100%, 0 100%;
+
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $accent;
+        transform: translate($offset, calc(-1 * $offset));
+
+
+        clip-path: polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, $mask);
+
+    }
 }

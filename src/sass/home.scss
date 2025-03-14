@@ -1,0 +1,180 @@
+@use '_variables' as *;
+
+section {
+    padding: 6rem 0;
+    scroll-margin-top: 100px;
+
+    h2:first-child {
+        font-size: 4.5rem;
+        letter-spacing: 8px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
+// Hero section
+.hero {
+    position: relative;
+    color: $white;
+    text-align: center;
+
+    h1 {
+        font-family: 'Juliette';
+        font-size: 8vw;
+        font-weight: 100;
+    }
+
+    img {
+      object-fit: cover;
+    }
+
+    &__cover {
+        @include flex-vertical();
+        
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0 2rem;
+        background: linear-gradient(178.04deg, rgba(0, 0, 0, 0) 16.58%, rgba(0, 0, 0, 0.8) 102.45%);
+        padding-top: 15vw;
+
+        .btn {
+            margin-top: 2.5rem;
+        }
+    }
+}
+
+@media (max-width: $tablet) {
+    .hero {
+        &__cover {
+            font-size: 16px;
+
+            .btn {
+                margin-top: 1rem;
+                font-size: 18px;
+                padding: 0.75rem 1.25rem;
+            }
+        }
+    }
+}
+
+@media (max-width: $mobile) {
+    .hero {
+        height: 640px;
+
+        h1 {
+            font-size: 15vw;
+        }
+
+        &__cover {
+            gap: 1rem;
+            padding-top: 75%;
+        }
+    }
+}
+
+// About section
+.about {
+    max-width: 864px;
+    margin: 0 auto;
+  
+    &__info {
+      display: flex;
+      gap: 6rem;
+  
+      &__card {
+        width: 360px;
+        height: 396px;
+  
+        &__body {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem 1.5rem;
+          border: 0.5px solid $mid-grey;
+          color: $dark-grey;
+          background-color: $white;
+          font-size: 13px;
+          letter-spacing: 0.25px;
+  
+          &__loreal {
+            width: 140px;
+          }
+        }
+      }
+  
+      &__content {
+          @include flex-vertical(1.5rem, start);
+  
+        h2 {
+          font-size: 2.6rem;
+          color: $black;
+        }
+  
+        &__logo {
+          width: 40px;
+        }
+  
+        &__bottom {
+          width:100%;
+          padding-top: 0.5rem;
+          display: flex;
+          gap: 1rem;
+          justify-content: space-between;
+  
+          &__handwriting {
+            display: inline-block;
+            font-size: 2rem;
+            font-family: 'juliette', serif;
+            transform: rotate(-15deg);
+          }
+        }
+      }
+    }
+  
+    &__brands {
+      &__title {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 4rem 0;
+          font-size: 1.25rem;
+          font-family: 'Figtree', sans-serif;
+          letter-spacing: 1px;
+          color: $dark-grey;
+          white-space: pre;
+  
+          &::before, &::after {
+              content: '';
+              display: block;
+              width: 100%;
+              border-bottom: 1px solid $mid-grey;
+          }
+      }
+  
+      &__list {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        flex-wrap: wrap;
+        margin: 0 auto;
+  
+        li {
+          width: 140px;
+          filter: invert(44%) sepia(98%) saturate(18%) hue-rotate(5deg) brightness(96%)
+            contrast(86%);
+  
+          &.sm {
+              width: 100px;
+          }
+        }
+      }
+    }
+  }
+  
+  .wedding {
+      width: 400px;
+  }
