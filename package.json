@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:css": "sass -w src/sass:src/css",
+    "build": "sass src/sass:src/css",
     "live": "live-server src --verbose",
     "dev": "concurrently \"npm run build:css\" \"npm run live\"",
     "test": "echo \"Error: no test specified\" && exit 1"
