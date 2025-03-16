@@ -23,3 +23,10 @@ $tablet: 1280px;
     align-items: $align;
     gap: $gap;
 }
+
+@mixin bg-image($url, $size: 100% auto, $position: center) {
+    background-image: url($url);
+    background-size: $size;
+    background-repeat: no-repeat;
+    background-position: $position;
+}

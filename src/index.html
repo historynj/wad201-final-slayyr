@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/home.css" />
 </head>
+
 <body id="body">
     <!-- nav loaded by script.js -->
     <main>
@@ -180,13 +182,17 @@
             </ul>
             <button class="btn">More Beauty Tips</button>
         </section>
-        <section id="contact">
+        <section id="contact" class="contact">
             <h2>Let's Talk</h2>
-            <p>Check availability, pricing, and schedule a meeting for your special day or our academy services.</p>
-            <form></form>
+            <p class="contact__description">Check availability, pricing, and schedule a meeting for your special day or our academy services.</p>
+            <form id="contact-form" class="contact__form">
+                <!-- Form will be loaded by contact.js -->
+            </form>
         </section>
     </main>
     <!-- Footer loaded by script.js -->
     <script type="text/javascript" src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/contact.js"></script>
 </body>
+
 </html>

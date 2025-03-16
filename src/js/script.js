@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         <button class="nav__icon--hamburger">
             <img src="./images/icons/hamburger.png" alt="Menu drawer button" />
         </button>
-        <a href="#" class="nav__menu ${current == '/' ? 'current' : ''}">
+        <a href="/" class="nav__menu ${current == '/' ? 'current' : ''}">
             <span>Home</span>
         </a>
         <a href="./portfolio.html" class="nav__menu ${current.includes('/portfolio') ? 'current' : ''}">
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         <a href="./academy.html" class="nav__menu" ${current.includes('/academy') ? 'current' : ''}>
             <span>Classes</span>
         </a>
-        <a href="#" class="nav__logo">
+        <a href="/" class="nav__logo">
             <img id="nav-logo-with-text" src="./images/logo/logo-with-text.png" alt="Carla Beauty Logo" />
             <img id="nav-logo" class="hidden" src="./images/logo/logo.png" alt="Carla Beauty Logo" />
         </a>
@@ -83,17 +83,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
             </div>
             <p>Expert makeup and hairstyle studio</p>
             <ul class="footer__top__list">
-                <li>
+                <li class="icon--xs">
                     <a href="tel:+00000000000">
                         <img src="./images/icons/phone-primary.png" alt="Instagram logo" />
                     </a>
                 </li>
-                <li>
+                <li class="icon--xs">
                     <a href="https://web.whatsapp.com/" target="_blank">
                         <img src="./images/icons/whatsapp-primary.png" alt="Instagram logo" />
                     </a>
                 </li>
-                <li>
+                <li class="icon--xs">
                     <a href="https://www.instagram.com/" target="_blank">
                         <img src="./images/icons/instagram-bold.png" alt="Instagram logo" />
                     </a>
@@ -135,9 +135,9 @@ window.addEventListener('scroll', () => {
 
     requestAnimationFrame(() => {
         if (scrollTop > 50) {
-            nav.classList.add('scrolled');
+            nav?.classList.add('scrolled');
         } else {
-            nav.classList.remove('scrolled');
+            nav?.classList.remove('scrolled');
         }
     });
 });
@@ -145,10 +145,10 @@ window.addEventListener('scroll', () => {
 function openMessage() {
     const menus = document.querySelectorAll('.message__item');
     menus.forEach((menu) => {
-        if (menu.classList.contains('message__item--message')) {
-            menu.classList.add('hidden');
+        if (menu?.classList.contains('message__item--message')) {
+            menu?.classList.add('hidden');
         } else {
-            menu.classList.remove('invisiable');
+            menu?.classList.remove('invisiable');
         }
     })
 }
@@ -156,10 +156,10 @@ function openMessage() {
 function closeMessage() {
     const menus = document.querySelectorAll('.message__item');
     menus.forEach((menu) => {
-        if (menu.classList.contains('message__item--message')) {
-            menu.classList.remove('hidden');
+        if (menu?.classList.contains('message__item--message')) {
+            menu?.classList.remove('hidden');
         } else {
-            menu.classList.add('invisiable');
+            menu?.classList.add('invisiable');
         }
     })
 }
