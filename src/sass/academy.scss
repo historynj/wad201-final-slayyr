@@ -1,1 +1,125 @@
-@use '_variables' as *;
+@use "_variables" as *;
+
+$title_font: Baskervville;
+$text_font: Figtree;
+
+#body {
+  background-color: $pale-white;
+}
+
+.classes {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 60px;
+
+  &__divider {
+    background-color: #e3b6b1;
+    width: 200px;
+    border: 1px;
+    height: 1px;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    color: #725a58;
+    font-family: $title_font;
+    font-weight: 400;
+    font-size: 5rem;
+    line-height: 130%;
+  }
+
+  &__text {
+    font-family: $text_font;
+  }
+}
+
+.teachers {
+  background-color: #fae9e7;
+  display: flex;
+  flex-direction: column;
+
+  &__teacher {
+    display: flex;
+    margin-bottom: 40px;
+  }
+
+  &__photo img {
+    width: 260px;
+    height: 370px;
+
+    margin: 30px 40px 0 68px;
+  }
+}
+
+.teacher {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin-top: 30px;
+    font-weight: 400;
+    font-size: 30px;
+    color: #725a58;
+  }
+}
+
+.info-items {
+  display: flex;
+  gap: 20px;
+  margin: 10px 0;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-text {
+  font-family: $text_font;
+  font-size: 15px;
+}
+
+img {
+  object-fit: cover;
+}
+
+.info-item img {
+  width: 20px;
+  height: 20px;
+}
+
+.teacher-info {
+  margin-top: 10px;
+
+  &__title {
+    color: black;
+    font-family: $title_font;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    color: black;
+    font-family: $text_font;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .curriculum-list {
+    list-style-type: disc;
+    padding: 0;
+    margin-bottom: 20px;
+
+    li {
+      padding: 0.3rem 0;
+      font-size: 14px;
+      font-weight: 300;
+      font-family: $text_font;
+      margin: 0 0 1px 20px;
+      color: black;
+    }
+  }
+}
