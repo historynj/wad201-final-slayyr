@@ -1,1 +1,100 @@
-@use '_variables' as *;
+@use "_variables" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: $pale-white;
+}
+
+// FIRST SECTION
+#intro-services {
+  text-align: center;
+  h1 {
+    font-size: $font-size-h1-cap;
+    line-height: $line-height-h1;
+    font-family: $font-primary;
+    letter-spacing: 13px;
+    line-height: 130px;
+    font-weight: 400;
+    color: $primary;
+  }
+
+  p {
+    font-size: $font-size-body;
+    line-height: 1.8;
+    font-family: $font-secondary;
+    color: $black;
+    max-width: 350px;
+    margin: 20px auto;
+    word-wrap: break-word;
+    display: block;
+    padding: 0 20px;
+    text-align: center;
+  }
+}
+
+// Second section
+
+#our-services {
+  background-color: $light-pink;
+  padding: 50px;
+}
+
+.articles {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.image-woman {
+  object-fit: cover;
+  width: 320px;
+  height: 380px;
+  margin-right: 50px;
+}
+.title-article {
+  font-family: $font-primary;
+  font-weight: 400;
+  font-size: $font-size-h4;
+  color: $primary;
+  margin-bottom: 20px;
+}
+.title-h6 {
+  font-family: $font-primary;
+  font-weight: 400;
+  font-size: $font-size-h6;
+  color: $black;
+  margin-bottom: 10px;
+}
+.paragraphs {
+  font-family: $font-secondary;
+  font-weight: 300;
+  max-width: 590px;
+  font-size: 18px;
+  color: $black;
+  margin-bottom: 20px;
+}
+
+.prices-time {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+
+  .icons {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    &__2xs {
+      width: 16px;
+      margin-right: 10px;
+    }
+    .money-content {
+      font-family: $font-secondary;
+      font-weight: 300;
+      margin-right: 20px;
+      font-size: 18px;
+    }
+  }
+}
