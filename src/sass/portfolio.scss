@@ -1,1 +1,134 @@
-@use '_variables' as *;
+@use "_variables" as *;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: $pale-white;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.my-work {
+  &__header {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    color: $primary;
+    font-family: "Baskervville";
+    font-size: 68px;
+    font-weight: 100;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 10rem;
+      height: 0.5px;
+      background-color: $accent;
+      margin: 0 auto;
+    }
+  }
+
+  &__description {
+    font-family: "Figtree";
+    font-weight: 100;
+    font-size: 1rem;
+    width: 30rem;
+    text-align: center;
+    padding-top: 1rem;
+  }
+
+  &__content {
+    width: 100%;
+    background-color: $light-pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__category {
+    display: flex;
+    gap: 5rem;
+    margin: 2rem auto;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 25rem;
+      height: 1.5px;
+      background-color: $mid-grey;
+    }
+
+    .category {
+      text-decoration: none;
+      color: $mid-grey;
+      font-family: "Baskervville";
+      font-size: 32px;
+      font-weight: 100;
+
+      &.active {
+        color: $black;
+      }
+    }
+
+    .underline {
+      position: absolute;
+      bottom: -5px;
+      left: -20px;
+      width: 10rem;
+      height: 1px;
+      background-color: $black;
+      transition: transform 0.3s ease;
+      z-index: 1;
+    }
+
+    .category:nth-child(1).active ~ .underline {
+      transform: translateX(0%);
+    }
+
+    .category:nth-child(2).active ~ .underline {
+      transform: translateX(100%);
+    }
+  }
+}
+
+.makeup {
+  &__img {
+    width: 300px;
+  }
+}
+
+.hairstyle {
+  &__img {
+    width: 300px;
+  }
+}
+
+.category__images {
+  display: none;
+  margin-top: 1rem;
+
+  &.active {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+}
