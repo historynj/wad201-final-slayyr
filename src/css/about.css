@@ -1,8 +1,6 @@
-@use "_variables" as *;
-
 body {
-  background-color: $pale-white;
-  color: $primary;
+  background-color: #F8F6F4;
+  color: #725A58;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -10,7 +8,7 @@ body {
 }
 
 h2 {
-  color: $accent;
+  color: #E3B6B1;
   font-size: 3.5rem;
   margin-bottom: 10px;
   text-align: center;
@@ -25,8 +23,9 @@ h1 {
   width: 100%;
   max-width: 400px;
 }
+
 .about-content {
-  background-color: $light-pink;
+  background-color: #FAE9E7;
   text-align: start;
   display: flex;
   align-items: center;
@@ -60,3 +59,5 @@ h4 {
   max-width: 800px;
   margin: 0 auto;
 }
+
+/*# sourceMappingURL=about.css.map */
