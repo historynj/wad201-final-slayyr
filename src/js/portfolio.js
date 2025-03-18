@@ -11,9 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .forEach((t) => t.classList.remove("active"));
       tab.classList.add("active");
 
-      const underline = document.querySelector(".underline");
-      underline.style.transform = `translateX(${index * 125}%)`;
-
       images.forEach((img) => img.classList.remove("active"));
       images[index].classList.add("active");
     });

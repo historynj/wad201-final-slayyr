@@ -14,6 +14,11 @@
     font-family: "Baskervville";
     font-size: 68px;
     font-weight: 100;
+    position: relative;
+
+    @media (max-width: $mobile) {
+      font-size: 42px;
+    }
 
     &::after {
       content: "";
@@ -22,16 +27,25 @@
       height: 0.5px;
       background-color: $accent;
       margin: 0 auto;
+      @media (max-width: $mobile) {
+        margin-top: 1rem;
+      }
     }
   }
 
   &__description {
+    color: $black;
     font-family: "Figtree";
     font-weight: 100;
     font-size: 1rem;
     width: 30rem;
     text-align: center;
     padding-top: 1rem;
+
+    @media (max-width: $mobile) {
+      width: 20rem;
+      margin-block: 1rem;
+    }
   }
 
   &__content {
@@ -40,13 +54,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    padding: 2rem;
   }
 
   &__category {
-    display: flex;
-    gap: 5rem;
-    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
     position: relative;
+    width: 100%;
+    max-width: 25rem;
+
+    @media (max-width: $mobile) {
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+    }
 
     &::after {
       content: "";
@@ -57,6 +80,10 @@
       width: 25rem;
       height: 1.5px;
       background-color: $mid-grey;
+
+      @media (max-width: $mobile) {
+        width: 100%;
+      }
     }
 
     .category {
@@ -65,21 +92,34 @@
       font-family: "Baskervville";
       font-size: 32px;
       font-weight: 100;
+      position: relative;
+      width: 100%;
+      display: block;
+      text-align: center;
+
+      @media (max-width: $mobile) {
+        font-size: 24px;
+      }
 
       &.active {
         color: $black;
       }
-    }
 
-    .underline {
-      position: absolute;
-      bottom: -5px;
-      left: -20px;
-      width: 10rem;
-      height: 1px;
-      background-color: $black;
-      transition: transform 0.3s ease;
-      z-index: 1;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0%;
+        height: 1px;
+        background-color: $black;
+        transition: width 0.3s ease;
+        z-index: 1;
+      }
+
+      &.active::after {
+        width: 100%;
+      }
     }
 
     .category:nth-child(1).active ~ .underline {
@@ -92,25 +132,37 @@
   }
 }
 
-.makeup {
-  &__img {
-    width: 300px;
-  }
-}
-
+.makeup,
 .hairstyle {
   &__img {
-    width: 300px;
+    width: 100%;
   }
 }
 
 .category__images {
   display: none;
   margin-top: 1rem;
+  width: 100%;
+  max-width: 800px;
 
   &.active {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
+
+    @media (max-width: $mobile) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+
+.btn {
+  margin-top: 4rem;
+  margin-bottom: 7rem;
+}
+
+@media (max-width: $mobile) {
+  .mobile--hidden {
+    display: none;
   }
 }
