@@ -1,32 +1,31 @@
-name: CI/CD Pipeline
+name: Clone to Personal Repo for Deploy
 
 on:
   push:
     branches:
-      - main
+      - main 
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+      - name: Checkout Source Repository
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Clone Target Repository
+        run: |
+          git clone https://x-access-token:${{ secrets.GH_PAT }}@github.com/Cornerstone-CICCC/final-project-slayyr.git deploy-repo
+          rsync -av --exclude=".git" --delete ./ deploy-repo/
+          cd deploy-repo
+          git add .
+          git commit -m "Auto-deploy from main branch" || echo "No changes to commit"
 
-      - name: Build CSS with Sass
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          publish_dir: src/css
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      - name: Push to Target Repository
+        run: |
+          cd deploy-repo
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/navynj/wad201-final-slayyr.git main -f
