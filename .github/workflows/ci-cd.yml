@@ -22,6 +22,7 @@ jobs:
           git clone https://x-access-token:${{ secrets.GH_PAT }}@github.com/Cornerstone-CICCC/final-project-slayyr.git deploy-repo
           rsync -av --exclude=".git" --delete ./ deploy-repo/
           cd deploy-repo
+          rm -rf .github
           git add .
           git commit -m "Auto-deploy from main branch" || echo "No changes to commit"
 
