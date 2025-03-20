@@ -123,8 +123,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     </nav>
   `;
 
-  const message = `
-        <ul id="message" class="message">
+  const message = `<ul id="message" class="message">
         <li class="message__item message__item--instagram invisiable">
             <a href="https://www.instagram.com/" target="_blank">
                 <img src="./images/icons/message-instagram.png" alt="Instagram icon" />
@@ -145,8 +144,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 <img src="./images/icons/message-x.png" alt="Message close icon" />
             </button>
         </li>
-        <li class="message__item message__item--message">
-            <button onclick="openMessage()">
+        <li id="message-btn" class="message__item message__item--message bg-black">
+            <button class="desktop-version" onclick="openMessage()">
                 <img src="./images/icons/message.png" alt="Message open icon" />
             </button>
         </li>
@@ -230,6 +229,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
   });
 
+  const messageBtn = document.getElementById('message-btn');
+
   window.addEventListener('scroll', () => {
     const nav = document.getElementById('nav');
     const scrollTop = window.scrollY;
@@ -237,31 +238,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
     requestAnimationFrame(() => {
       if (scrollTop > 50) {
         nav?.classList.add('scrolled');
+        messageBtn.classList.remove('bg-black');
       } else {
         nav?.classList.remove('scrolled');
+        messageBtn.classList.add('bg-black');
       }
     });
   });
-
-  function openMessage() {
-    const menus = document.querySelectorAll('.message__item');
-    menus.forEach((menu) => {
-      if (menu?.classList.contains('message__item--message')) {
-        menu?.classList.add('close');
-      } else {
-        menu?.classList.remove('invisiable');
-      }
-    });
-  }
-
-  function closeMessage() {
-    const menus = document.querySelectorAll('.message__item');
-    menus.forEach((menu) => {
-      if (menu?.classList.contains('message__item--message')) {
-        menu?.classList.remove('close');
-      } else {
-        menu?.classList.add('invisiable');
-      }
-    });
-  }
 });
+
+
+function openMessage() {
+  const menus = document.querySelectorAll('.message__item');
+  menus.forEach((menu) => {
+    if (menu?.classList.contains('message__item--message')) {
+      menu?.classList.add('close');
+    } else {
+      menu?.classList.remove('invisiable');
+    }
+  });
+}
+
+function closeMessage() {
+  const menus = document.querySelectorAll('.message__item');
+  menus.forEach((menu) => {
+    if (menu?.classList.contains('message__item--message')) {
+      menu?.classList.remove('close');
+    } else {
+      menu?.classList.add('invisiable');
+    }
+  });
+}

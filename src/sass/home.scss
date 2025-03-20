@@ -1,8 +1,10 @@
 @use "_variables" as *;
 @use "contact";
 
+$padding: 1rem;
+
 section {
-  padding: 6rem 0;
+  padding: 6rem $padding;
   scroll-margin-top: 100px;
 
   h2:first-child {
@@ -137,6 +139,30 @@ section {
           font-size: 2rem;
           font-family: "juliette", serif;
           transform: rotate(-15deg);
+        }
+      }
+    }
+
+    @media (max-width: $mobile) {
+      gap: 4rem;
+      flex-direction: column-reverse;
+      align-items: center;
+
+      &__card {
+        height: 508px;
+      }
+
+      &__content {
+        align-items: center;
+        text-align: center;
+
+        &__logo {
+          width: 2rem;
+          filter: brightness(0.5) grayscale(100%);
+        }
+
+        &__bottom {
+          justify-content: center;
         }
       }
     }
@@ -380,11 +406,9 @@ section {
 }
 
 @media (max-width: 960px) {
-  $paddingX: 1rem;
-
   .makeup101 {
     margin: 0;
-    padding: 0 $paddingX;
+    padding: 0 $padding;
     padding-top: 3rem;
     width: 100%;
 
@@ -422,7 +446,7 @@ section {
     }
 
     &__image {
-      width: calc(100% + $paddingX * 2);
+      width: calc(100% + $padding * 2);
     }
   }
 
