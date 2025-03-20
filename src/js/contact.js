@@ -2,14 +2,14 @@ let savedForm = {};
 let phoneCountryCodeData = [];
 
 const premiumServices = {
-  'premium-service-cleansing': 'Deep skin cleansing',
-  'premium-service-bleach': 'Bleach body hair',
-  'premium-service-hydromassage': 'Hydromassage',
-  'premium-service-moisture': 'Hair Moisture',
-  'premium-service-waxing': 'Waxing',
-  'premium-service-spa': 'Foot and hand SPA',
-  'premium-service-relaxing': 'Relaxing massage',
-  'premium-service-gommage': 'Gommage (body exfoliation and hydration)',
+  "premium-service-cleansing": "Deep skin cleansing",
+  "premium-service-bleach": "Bleach body hair",
+  "premium-service-hydromassage": "Hydromassage",
+  "premium-service-moisture": "Hair Moisture",
+  "premium-service-waxing": "Waxing",
+  "premium-service-spa": "Foot and hand SPA",
+  "premium-service-relaxing": "Relaxing massage",
+  "premium-service-gommage": "Gommage (body exfoliation and hydration)",
 };
 
 const formServiceStart = `
@@ -84,6 +84,27 @@ const formServiceStart = `
             </div>
         </div>
     </div>
+    <div>
+        <label>When do you want us to call?</label>
+        <div class="contact__form__inputs__when">
+            <div>
+                <input id="contact-when-notmind" type="radio" name="contact-when" value="contact-when-notmind" checked />
+                <label for="contact-when-notmind">I don't mind</label>
+            </div>
+            <div>
+                <input id="contact-when-morning" type="radio" name="contact-when" value="contact-when-morning" />
+                <label for="contact-when-morning">Morning</label>
+            </div>
+            <div>
+                <input id="contact-when-afternoon" type="radio" name="contact-when" value="contact-when-afternoon" />
+                <label for="contact-when-afternoon">Afternoon</label>
+            </div>
+            <div>
+                <input id="contact-when-evening" type="radio" name="contact-when" value="contact-when-evening" />
+                <label for="contact-when-evening">Evening</label>
+            </div>
+        </div>
+    </div>
 </div>
 <button id="next-btn" type="button" class="btn" onclick="renderServiceNextForm()">Next</button>`;
 
@@ -152,19 +173,19 @@ const formClassStart = `<div class="contact__form__tab">
 </div>
 <button type="subtmit" class="btn">Submit</button>`;
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   const form = renderServiceStartForm();
-  form.addEventListener('submit', submitContact);
+  form.addEventListener("submit", submitContact);
 });
 
 function renderServiceStartForm() {
   savedForm = {};
 
-  const form = document.getElementById('contact-form');
+  const form = document.getElementById("contact-form");
   form.innerHTML = formServiceStart;
 
-  const header = document.getElementById('contact-header');
-  header?.classList.remove('hidden');
+  const header = document.getElementById("contact-header");
+  header?.classList.remove("hidden");
 
   renderPhoneCountryCode();
 
@@ -174,8 +195,8 @@ function renderServiceStartForm() {
 function changeType(target) {
   savedForm = {};
 
-  const form = document.getElementById('contact-form');
-  if (target.value === 'contact-service') {
+  const form = document.getElementById("contact-form");
+  if (target.value === "contact-service") {
     form.innerHTML = formServiceStart;
   } else {
     form.innerHTML = formClassStart;
@@ -186,41 +207,42 @@ function changeType(target) {
 
 async function renderPhoneCountryCode() {
   if (!phoneCountryCodeData.length) {
-    const res = await fetch('../data/country-code.json');
+    const res = await fetch("../data/country-code.json");
     phoneCountryCodeData = await res.json();
   }
 
-  const phoneCountrySelect = document.getElementById('phone-country-code');
+  const phoneCountrySelect = document.getElementById("phone-country-code");
 
   console.log(phoneCountrySelect, phoneCountryCodeData);
 
   phoneCountryCodeData
     .toSorted((a, b) => a.dial_code - b.dial_code)
     .forEach(({ dial_code }) => {
-      const option = document.createElement('option');
+      const option = document.createElement("option");
       option.value = dial_code;
       option.innerText = dial_code;
       phoneCountrySelect.appendChild(option);
     });
 
-
-  const header = document.getElementById('contact-header');
-  header?.classList.remove('hidden');
+  const header = document.getElementById("contact-header");
+  header?.classList.remove("hidden");
 }
 
 function renderServiceNextForm() {
-  const form = document.getElementById('contact-form');
+  const form = document.getElementById("contact-form");
 
   const formData = new FormData(form);
   for (const [key, val] of formData.entries()) {
     savedForm[key] = val;
   }
 
-  const eventType = formData.get('event-type');
+  const eventType = formData.get("event-type");
 
   const weddingOthers = `<li class="flex">
         <div class="contact__form__inputs__others__who">
-            <span>Groom</span>
+            <div class="contact__form__inputs__others__who__label">
+                <span>Groom</span>
+            </div>  
             <div class="input--quantity">
                 <button id="groom-number-minus" type="button" disabled onclick="changeQuantity('groom-number', -1)">-</button>
                 <span id="groom-number-display">0</span>
@@ -238,7 +260,9 @@ function renderServiceNextForm() {
     </li>
     <li class="flex">
         <div class="contact__form__inputs__others__who">
-            <span>Bridesmaid</span>
+            <div class="contact__form__inputs__others__who__label">
+                <span>Bridesmaid</span>
+            </div>
             <div class="input--quantity">
                 <button id="bridesmaid-number-minus" type="button" disabled onclick="changeQuantity('bridesmaid-number', -1)">-</button>
                 <span id="bridesmaid-number-display">0</span>
@@ -261,7 +285,9 @@ function renderServiceNextForm() {
     </li>
     <li class="flex">
         <div class="contact__form__inputs__others__who">
-            <span>Flower girl</span>
+            <div class="contact__form__inputs__others__who__label">
+                <span>Flower girl</span>
+            </div>
             <div class="input--quantity">
                 <button id="flowergirl-number-minus" type="button" disabled onclick="changeQuantity('flowergirl-number', -1)">-</button>
                 <span id="flowergirl-number-display">0</span>
@@ -343,9 +369,9 @@ function renderServiceNextForm() {
                 <div class="contact__form__inputs">
                     <div>
                         <label>${
-                          eventType === 'event-type-wedding'
-                            ? 'Bridal Service'
-                            : 'Service'
+                          eventType === "event-type-wedding"
+                            ? "Bridal Service"
+                            : "Service"
                         }</label>
                         <div class="input--select flex">
                             <input id="service-type-makeup" type="checkbox" name="service-type-checkbox" value="service-type-makeup"
@@ -415,7 +441,7 @@ function renderServiceNextForm() {
                         <label>Anyone else need service?</label>
                         <ul class="contact__form__inputs__others">
                             ${
-                              eventType === 'event-type-wedding'
+                              eventType === "event-type-wedding"
                                 ? weddingOthers
                                 : partyOthers
                             }
@@ -429,25 +455,25 @@ function renderServiceNextForm() {
                 <button type="submit" class="btn">Submit</button>
     `;
 
-  const header = document.getElementById('contact-header');
-  header.classList.add('hidden');
+  const header = document.getElementById("contact-header");
+  header.classList.add("hidden");
 }
 
 function changeSubmitBtn() {
-  const form = document.getElementById('contact-form');
-  const photoshoot = document.getElementById('event-type-photoshoot');
-  const nextBtn = document.getElementById('next-btn');
-  const submitBtn = document.getElementById('submit-btn');
+  const form = document.getElementById("contact-form");
+  const photoshoot = document.getElementById("event-type-photoshoot");
+  const nextBtn = document.getElementById("next-btn");
+  const submitBtn = document.getElementById("submit-btn");
 
   if (photoshoot.checked) {
     if (nextBtn) {
       form.removeChild(nextBtn);
 
-      const submitBtn = document.createElement('button');
-      submitBtn.classList.add('btn');
-      submitBtn.innerText = 'Submit';
-      submitBtn.type = 'submit';
-      submitBtn.id = 'submit-btn';
+      const submitBtn = document.createElement("button");
+      submitBtn.classList.add("btn");
+      submitBtn.innerText = "Submit";
+      submitBtn.type = "submit";
+      submitBtn.id = "submit-btn";
 
       form.appendChild(submitBtn);
     }
@@ -455,12 +481,12 @@ function changeSubmitBtn() {
     if (submitBtn) {
       form.removeChild(submitBtn);
 
-      const nextBtn = document.createElement('button');
-      nextBtn.classList.add('btn');
-      nextBtn.innerText = 'Next';
-      nextBtn.type = 'button';
-      nextBtn.id = 'submit-btn';
-      nextBtn.addEventListener('click', renderServiceNextForm);
+      const nextBtn = document.createElement("button");
+      nextBtn.classList.add("btn");
+      nextBtn.innerText = "Next";
+      nextBtn.type = "button";
+      nextBtn.id = "submit-btn";
+      nextBtn.addEventListener("click", renderServiceNextForm);
 
       form.appendChild(nextBtn);
     }
@@ -469,8 +495,8 @@ function changeSubmitBtn() {
 
 function changeQuantity(id, d) {
   const input = document.getElementById(id);
-  const display = document.getElementById(id + '-display');
-  const minusBtn = document.getElementById(id + '-minus');
+  const display = document.getElementById(id + "-display");
+  const minusBtn = document.getElementById(id + "-minus");
 
   const nextValue = parseInt(input.value) + d;
   const nextStr = nextValue.toString();
@@ -490,8 +516,8 @@ function submitContact(e) {
 
   const formData = new FormData(e.target);
   for (const [key, val] of formData.entries()) {
-    if (key.includes('checkbox') && savedForm[key]) {
-      savedForm[key] += ',' + val;
+    if (key.includes("checkbox") && savedForm[key]) {
+      savedForm[key] += "," + val;
     } else {
       savedForm[key] = val;
     }
@@ -500,41 +526,42 @@ function submitContact(e) {
   console.log(savedForm);
 
   const premium =
-    savedForm['premium-service-checkbox']?.split(',').filter((item) => item) || [];
+    savedForm["premium-service-checkbox"]?.split(",").filter((item) => item) ||
+    [];
 
-  const attendessGroom = parseInt(savedForm['groom-number']);
-  const groomService = savedForm['others-groom-checkbox']
-    ?.split(',')
+  const attendessGroom = parseInt(savedForm["groom-number"]);
+  const groomService = savedForm["others-groom-checkbox"]
+    ?.split(",")
     .filter((item) => item)
-    .map((item) => item.split('-')[item.split('-').length - 1]);
+    .map((item) => item.split("-")[item.split("-").length - 1]);
 
-  const attendessBridesmaid = parseInt(savedForm['bridesmaid-number']);
-  const bridesmaidService = savedForm['others-bridesmaid-checkbox']
-    ?.split(',')
+  const attendessBridesmaid = parseInt(savedForm["bridesmaid-number"]);
+  const bridesmaidService = savedForm["others-bridesmaid-checkbox"]
+    ?.split(",")
     .filter((item) => item)
-    .map((item) => item.split('-')[item.split('-').length - 1]);
+    .map((item) => item.split("-")[item.split("-").length - 1]);
 
-  const attendessFlowergirl = parseInt(savedForm['flowergirl-number']);
-  const flowergirlService = savedForm['others-flowergirl-checkbox']
-    ?.split(',')
+  const attendessFlowergirl = parseInt(savedForm["flowergirl-number"]);
+  const flowergirlService = savedForm["others-flowergirl-checkbox"]
+    ?.split(",")
     .filter((item) => item)
-    .map((item) => item.split('-')[item.split('-').length - 1]);
+    .map((item) => item.split("-")[item.split("-").length - 1]);
 
-  const attendessWoman = parseInt(savedForm['woman-number']);
-  const womanService = savedForm['others-woman-checkbox']
-    ?.split(',')
+  const attendessWoman = parseInt(savedForm["woman-number"]);
+  const womanService = savedForm["others-woman-checkbox"]
+    ?.split(",")
     .filter((item) => item)
-    .map((item) => item.split('-')[item.split('-').length - 1]);
+    .map((item) => item.split("-")[item.split("-").length - 1]);
 
-  const attendessMan = parseInt(savedForm['man-number']);
-  const manService = savedForm['others-man-checkbox']
-    ?.split(',')
+  const attendessMan = parseInt(savedForm["man-number"]);
+  const manService = savedForm["others-man-checkbox"]
+    ?.split(",")
     .filter((item) => item)
-    .map((item) => item.split('-')[item.split('-').length - 1]);
+    .map((item) => item.split("-")[item.split("-").length - 1]);
 
-  const form = document.getElementById('contact-form');
+  const form = document.getElementById("contact-form");
 
-  if (savedForm['contact-type'] === 'contact-service') {
+  if (savedForm["contact-type"] === "contact-service") {
     form.innerHTML = `<div class="contact__form__tab">
         <input id="contact-service" type="radio" name="contact-type" value="contact-service" hidden onchange="changeType(this)" checked />
         <label for="contact-service">Services</label>
@@ -574,76 +601,84 @@ function submitContact(e) {
                     <h5>Premium services</h5>
                     ${premium
                       .map((item) => `<li>- ${premiumServices[item]}</li>`)
-                      .join('')}
+                      .join("")}
                 </ul>
                 <ul id="additional-attendees-confirm">
                     <h5>Additional attendees</h5>
                     ${
                       attendessGroom
                         ? `<li>- Groom${
-                            attendessGroom > 1 ? ` * ${attendessGroom}` : ''
+                            attendessGroom > 1 ? ` * ${attendessGroom}` : ""
                           } ${
                             groomService.length
-                              ? `(${groomService.join(' + ')})</li>`
-                              : ''
+                              ? `(${groomService.join(" + ")})</li>`
+                              : ""
                           }`
-                        : ''
+                        : ""
                     }
                     ${
                       attendessBridesmaid
                         ? `<li>- Bridesmaid${
-                            attendessBridesmaid > 1 ? ` * ${attendessBridesmaid}` : ''
+                            attendessBridesmaid > 1
+                              ? ` * ${attendessBridesmaid}`
+                              : ""
                           } ${
                             bridesmaidService.length
-                              ? `(${bridesmaidService.join(' + ')})</li>`
-                              : ''
+                              ? `(${bridesmaidService.join(" + ")})</li>`
+                              : ""
                           }`
-                        : ''
+                        : ""
                     }
                     ${
                       attendessFlowergirl
                         ? `<li>- Flowergirl${
-                            attendessFlowergirl > 1 ? ` * ${attendessFlowergirl}` : ''
+                            attendessFlowergirl > 1
+                              ? ` * ${attendessFlowergirl}`
+                              : ""
                           } ${
                             flowergirlService.length
-                              ? `(${flowergirlService.join(' + ')})</li>`
-                              : ''
+                              ? `(${flowergirlService.join(" + ")})</li>`
+                              : ""
                           }`
-                        : ''
+                        : ""
                     }
                     ${
                       attendessWoman
                         ? `<li>- Woman${
-                            attendessWoman > 1 ? ` * ${attendessWoman}` : ''
+                            attendessWoman > 1 ? ` * ${attendessWoman}` : ""
                           } ${
                             womanService.length
-                              ? `(${womanService.join(' + ')})</li>`
-                              : ''
+                              ? `(${womanService.join(" + ")})</li>`
+                              : ""
                           }`
-                        : ''
+                        : ""
                     }
                     ${
                       attendessMan
-                        ? `<li>- Man${attendessMan > 1 ? ` * ${attendessMan}` : ''} ${
-                            manService.length ? `(${manService.join(' + ')})</li>` : ''
+                        ? `<li>- Man${
+                            attendessMan > 1 ? ` * ${attendessMan}` : ""
+                          } ${
+                            manService.length
+                              ? `(${manService.join(" + ")})</li>`
+                              : ""
                           }`
-                        : ''
+                        : ""
                     }
                 </ul>
             </div>
         </div>
 
-        <div class="contact__complete__info__logo">
-            <img src="./images/logo/logo-with-text.png" alt="Carla Beauty logo" />
-        </div>
-        <div class="contact__complete__info__footer flex">
+        <div class="contact__complete__info__footer">
+            <div class="contact__complete__info__logo">
+                <img src="./images/logo/logo-with-text.png" alt="Carla Beauty logo" />
+            </div>
             <ul>
                 <li class="hidden">
                     <a href="tel:+00000000000">
                         <div class="icon--xs">
                             <img src="./images/icons/phone-primary.png" />
                         </div>
-                        <span>+ 1 00000000000</span>
+                        <span class="contact__hidden">+ 1 00000000000</span>
                     </a>
                 </li>
                 <li>
@@ -651,7 +686,7 @@ function submitContact(e) {
                         <div class="icon--xs">
                             <img src="./images/icons/whatsapp-primary.png" />
                         </div>
-                        <span>+ 1 00000000000</span>
+                        <span class="contact__hidden">+ 1 00000000000</span>
                     </a>
                 </li>
                 <li>
@@ -659,7 +694,7 @@ function submitContact(e) {
                         <div class="icon--xs">
                             <img src="./images/icons/instagram-bold.png" />
                         </div>
-                        <span>carlabeatrizs_</span>
+                        <span class="contact__hidden">carlabeatrizs_</span>
                     </a>
                 </li>
             </ul>
@@ -715,8 +750,8 @@ function submitContact(e) {
 `;
   }
 
-  const header = document.getElementById('contact-header');
-  header.classList.add('hidden');
+  const header = document.getElementById("contact-header");
+  header.classList.add("hidden");
 
   savedForm = {};
 }
