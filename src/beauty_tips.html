@@ -3,49 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/beauty_tips.css" />
     <title>Beauty tips</title>
 </head>
-<body>
-    <section class="Beauty-tips">
-        <div class="Beauty-tips-top">
-            <h1 class="title">
-                Beauty Tips
-            </h1>
+<body id="body">
+    <section class="beauty-tips">
+        <div class="beauty-tips-top">
+            <h1 class="title">BEAUTY TIPS</h1>
             <hr />
             <p class="belowtitle-text">
                 We offer classes for all skill levels, from beginners to future professionals.
             </p>
-            <button class="title-button">More on instagram</button>
+            <div class="title-button">
+                <button class="btn" ><a href="https://www.instagram.com/" target="_blank" class="a-instagram"> More on instagram</a></button>
+             </div>
         </div>
     </section>
 
     <section class="all-images">
-        <div class="beauty-links">
-            <a href="">#All</a>
-            <a href="">#Eyes</a>
-            <a href="">#Base</a>
-            <a href="">#Lips</a>
-            <a href="">#Hair</a>
+        <div class="beauty-links" id="beauty-links">
+            <a href="" class="active-filter" data-filter="all">#All</a>
+            <a href="" data-filter="eyes">#Eyes</a>
+            <a href="" data-filter="base">#Base</a>
+            <a href="" data-filter="lips">#Lips</a>
+            <a href="" data-filter="hair">#Hair</a>
         </div>
         <div class="images-box">
-            <img src="./beauty-images/1st.jpeg" alt="" width="297px" height="292px">
-            <img src="./beauty-images/2nd.png" alt="" width="297px" height="292px">
-            <img src="./beauty-images/3rd.png" alt="" width="297px" height="292px">
-            <img src="./beauty-images/4th.png" alt="" width="297px" height="292px">
-            <img src="./beauty-images/5th.png" alt="" width="297px" height="292px">
-            <img src="./beauty-images/6th.png" alt="" width="297px" height="292px">
-            <img src="./beauty-images/7th.png" alt="" width="297px" height="292px">
-            <img src="./beauty-images/8th.png" alt="" width="297px" height="292px">
-            <img src="./beauty-images/9th.png" alt="" width="297px" height="292px">
-            <img src="./beauty-images/10th.png" alt="" width="297px" height="292px">
-            <img src="./beauty-images/11th.png" alt="" width="297px" height="292px">
-            <img src="./beauty-images/12th.png" alt="" width="297px" height="292px">
+
+            <div class="image-item" data-category="hair" id="image-item">
+                <img src="./images/beauty-images/1st.jpeg" alt="" width="297px" height="292px">
+                <div class="overlay">
+                    <p>How to do stunning hair in 3...</p>
+                    <div class="firstbutton">
+                        <img class="play-button" src="./images/beauty-images/play-button.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-item" data-category="eyes" id="image-item">
+                <img src="./images/beauty-images/2nd.png" alt="" width="297px" height="292px">
+                <div class="overlay">
+                    <p>Produce a beautiful bride ✨</p>
+                    <div>
+                        <img class="play-button" src="./images/beauty-images/play-button.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-item" data-category="lips" id="image-item">
+                <img src="./images/beauty-images/3rd.png" alt="" width="297px" height="292px">
+                <div class="overlay">
+                    <p>Make up for photoshoot 📸✨</p>
+                    <div>
+                        <img class="play-button" src="./images/beauty-images/play-button.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-item" data-category="eyes" id="image-item">
+                <img src="./images/beauty-images/4th.png" alt="" width="297px" height="292px">
+                <div class="overlay">
+                    <p>How to apply lashes like a pro</p>
+                    <div>
+                        <img class="play-button" src="./images/beauty-images/play-button.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-item" data-category="base" id="image-item">
+                <img src="./images/beauty-images/5th.png" alt="" width="297px" height="292px">
+                <div class="overlay">
+                    <p>Make up for all skins 🌟</p>
+                    <div>
+                        <img class="play-button" src="./images/beauty-images/play-button.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-item" data-category="base" id="image-item">
+                <img src="./images/beauty-images/6th.png" alt="" width="297px" height="292px">
+                <div class="overlay">
+                    <p>Baking? In 2024? How to do it</p>
+                    <div>
+                        <img class="play-button" src="./images/beauty-images/play-button.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-item" data-category="hair" id="image-item">
+                <img src="./images/beauty-images/7th.png" alt="" width="297px" height="292px">
+                <div class="overlay">
+                    <p>Beachy waves in 15 minutes 🏝️</p>
+                    <div>
+                        <img class="play-button" src="./images/beauty-images/play-button.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-item" data-category="hair" id="image-item">
+                <img src="./images/beauty-images/8th.png" alt="" width="297px" height="292px">
+                <div class="overlay">
+                    <p>How to style long hair 💁🏼‍♀️</p>
+                    <div>
+                        <img class="play-button" src="./images/beauty-images/play-button.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-item" data-category="base" id="image-item">
+                <img src="./images/beauty-images/9th.png" alt="" width="297px" height="292px">
+                <div class="overlay">
+                    <p>Best way to apply concealer 🗣️</p>
+                    <div>
+                        <img class="play-button" src="./images/beauty-images/play-button.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-item" data-category="hair" id="image-item">
+                <img src="./images/beauty-images/10th.png" alt="" width="297px" height="292px">
+                <div class="overlay">
+                    <p>Romantic waves for any occasion</p>
+                    <div>
+                        <img class="play-button" src="./images/beauty-images/play-button.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-item" data-category="lips" id="image-item">
+                <img src="./images/beauty-images/11th.png" alt="" width="297px" height="292px">
+                <div class="overlay">
+                    <p>Pink, pink and more pink! 💖</p>
+                    <div>
+                        <img class="play-button" src="./images/beauty-images/play-button.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-item" data-category="lips" id="image-item">
+                <img src="./images/beauty-images/12th.png" alt="" width="297px" height="292px">
+                <div class="overlay">
+                    <p>Red lips? Count me in! 🫦✨</p>
+                    <div>
+                        <img class="play-button" src="./images/beauty-images/play-button.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+
         <div class="images-button">
-            <button>Load more</button>
+            <button id="toggleimages" class="btn">Load more</button>
         </div>
     </section>
     
+    <script src="./js/script.js"></script>
+    <script src="./js/beauty_tips.js"></script>
+
 
 </body>
 </html>
