@@ -12,82 +12,141 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.cdnfonts.com/css/juliette-3');
 
-
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    position: relative;
-    font-family: 'Figtree', sans-serif;
-    color: $primary;
-    font-size: 18px;
-    font-weight: 300;
-    letter-spacing: 1px;
-    background-color: $pale-white;
+  position: relative;
+  font-family: 'Figtree', sans-serif;
+  color: $primary;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  background-color: $pale-white;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Baskervville', serif;
-    font-weight: inherit;
-    letter-spacing: 1.5px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Baskervville', serif;
+  font-weight: inherit;
+  letter-spacing: 1.5px;
 }
 
 // components
 .btn {
-    font-family: 'Baskervville', serif;
-    padding: 1rem 2rem;
-    font-size: 1.25rem;
-    border: 1px solid $primary;
-    transition: all 0.2s ease-in-out;
+  font-family: 'Baskervville', serif;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  border: 1px solid $primary;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: $white;
+    background-color: $dark-pink;
+    border-color: $dark-pink;
+  }
+
+  &--white {
+    color: $white;
+    border-color: $white;
 
     &:hover {
-        color: $white;
-        background-color: $dark-pink;
-        border-color: $dark-pink;
+      color: $black;
+      background-color: $pale-white;
+      border-color: $pale-white;
+      opacity: 0.6;
     }
-
-    &--white {
-        color: $white;
-        border-color: $white;
-        
-
-        &:hover {
-            color: $black;
-            background-color: $pale-white;
-            border-color: $pale-white;
-            opacity: 0.6;
-        }
-    }
+  }
 }
 
 .line-point {
-    position: relative;
+  position: relative;
 
-    &::before {
-        $offset: 1.25rem;
-        $mask: 0 $offset, calc(100% - $offset - 2px) $offset, calc(100% - $offset - 2px) 100%, 0 100%;
+  &::before {
+    $offset: 1.25rem;
+    $mask: 0 $offset, calc(100% - $offset - 2px) $offset, calc(100% - $offset - 2px) 100%,
+      0 100%;
 
-        content: '';
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border: 1px solid $accent;
-        transform: translate($offset, calc(-1 * $offset));
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $accent;
+    transform: translate($offset, calc(-1 * $offset));
 
-
-        clip-path: polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, $mask);
-
-    }
+    clip-path: polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, $mask);
+  }
 }
 
 .icon {
-    &--sm {
-        width: 32px;
-    }
+  &--sm {
+    width: 32px;
+  }
 
-    &--xs {
-        width: 24px;
-    }
+  &--xs {
+    width: 24px;
+  }
+}
+#mobile-nav {
+  background-color: $pale-white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.close-logo {
+  position: relative;
+  width: 100%;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.logo-img {
+  max-width: 100px;
+  height: auto;
+  margin: 0 auto;
+}
+.header-pages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  height: 100%;
+}
+.pages {
+  font-family: $font-primary;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 100px;
+  color: $primary;
+}
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+.social-media-img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: 30px;
+}
+.last-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

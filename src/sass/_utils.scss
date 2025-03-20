@@ -1,23 +1,32 @@
-@use '_variables' as *;
+@use "_variables" as *;
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .flex-col {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .hidden {
-    display: none;
+  display: none !important;
 }
 
 .invisiable {
-    visibility: hidden;
+  visibility: hidden;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.no-scroll {
+  height: 100dvh;
+  overflow: hidden;
 }
 
 @media (max-width: $mobile) {
-    .flex {
-        flex-direction: column;
-    }
+  .flex {
+    flex-direction: column;
+  }
 }

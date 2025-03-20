@@ -1,135 +1,215 @@
 @use '_variables' as *;
 
 @mixin seperator($gap) {
-    content: '|';
-    color: $accent;
-    margin-right: $gap;
+  content: '|';
+  color: $accent;
+  margin-right: $gap;
 }
 
 @mixin nav($gap) {
-    $height: 180px;
+  $height: 180px;
 
-    position: fixed;
-    top: 0;
-    z-index: 10;
-    background-color: $pale-white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    padding: 2rem 1rem;
-    font-family: 'Baskervville', serif;
-    will-change: height;
-    transition: height 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background-color: $pale-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  padding: 2rem 1rem;
+  font-family: 'Baskervville', serif;
+  will-change: height;
+  transition: height 0.3s ease-in-out;
+  height: $height;
+
+  &__placeholder {
     height: $height;
+  }
+
+  &__icon--hamburger {
+    display: none;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    padding-right: $gap;
+
+    &:not(:nth-child(2)):not(.nav__logo + *)::before {
+      @include seperator($gap);
+    }
+
+    &.current span {
+      border-bottom: 0.5px solid $primary;
+    }
+  }
+
+  &__logo {
+    margin: 0 1.5rem;
+    width: 125px;
+    transform: translateX(-1rem);
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+
+    &--instagram {
+      display: flex;
+      align-items: center;
+      width: 24px;
+    }
+
+    &::before {
+      @include seperator($gap);
+    }
+  }
+
+  #nav-logo-with-text {
+    display: block;
+  }
+
+  #nav-logo {
+    display: none;
+  }
+
+  &.scrolled {
+    font-size: 16px;
+    height: 80px;
 
     &__placeholder {
-        height: $height;
+      display: none;
     }
 
-    &__icon--hamburger {
+    .nav__logo {
+      width: 40px;
+
+      #nav-logo-with-text {
         display: none;
-    }
+      }
 
-    &__menu {
-        display: flex;
-        align-items: center;
-        padding-right: $gap;
-
-        &:not(:nth-child(2)):not(.nav__logo + *)::before {
-            @include seperator($gap);
-        }
-
-        &.current span {
-            border-bottom: 0.5px solid $primary;
-        }
-    }
-
-    &__logo {
-        margin: 0 1.5rem;
-        width:  125px;
-        transform: translateX(-1rem);
-    }
-
-    &__icon {
-        display: flex;
-        align-items: center;
-
-        &--instagram {
-        display: flex;
-        align-items: center;
-            width: 24px;
-        }
-
-        &::before {
-           @include seperator($gap);
-        }
-    }
-
-    #nav-logo-with-text {
+      #nav-logo {
         display: block;
+      }
     }
-
-    #nav-logo {
-        display: none;
-    }
-
-    &.scrolled {
-        font-size: 16px;
-        height: 80px;
-
-
-        &__placeholder {
-            display: none;
-        }
-
-        .nav__logo {
-            width: 40px;
-
-            #nav-logo-with-text {
-                display: none;
-            }
-
-            #nav-logo {
-                display: block;
-            }
-        }
-    }
+  }
 }
 
 .nav {
-    @include nav(2rem);
+  @include nav(2rem);
 }
 
 @media (max-width: $tablet) {
-    .nav {
-        @include nav(1rem);
-        font-size: 16px;
-    }
+  .nav {
+    @include nav(1rem);
+    font-size: 16px;
+  }
 }
 
 @media (max-width: $mobile) {
-    .nav {
-        width: 100%;
-        justify-content: space-between;
-        padding: 2rem;
+  .nav {
+    width: 100%;
+    justify-content: space-between;
+    padding: 2rem;
 
+    &__logo {
+      width: 96px;
+      transform: translateX(0);
+    }
+  }
 
-        &__logo {
-            width: 96px; 
+  .nav__menu,
+  .nav__icon::before {
+    display: none;
+  }
+
+  .nav__icon--hamburger {
+    display: block;
+  }
+
+  .nav__icon--hamburger,
+  .nav__icon--instagram {
+    width: 40px;
+  }
+}
+
+.mobile-nav {
+  background-color: $pale-white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+  height: 100vh;
+  overflow: hidden;
+
+  &.close {
+    transform: translateY(-100%);
+  }
+
+  &__header {
+    position: relative;
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    .icon--close {
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+      padding-top: 40px;
+    }
+  }
+
+  &__logo {
+    max-width: 100px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 32px;
+    height: 100%;
+    color: $primary;
+    display: flex;
+    align-items: center;
+  }
+
+  &__footer {
+    padding: 2.5rem 0;
+    @include flex-vertical(1.75rem);
+
+    &__social-media {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        & > * {
+          width: 1.5rem;
+          height: 1.5rem;
         }
+      }
     }
 
-    .nav__menu, .nav__icon::before {
-        display: none;
-    }
-
-    .nav__icon--hamburger {
-        display: block;
-    }
-
-    .nav__icon--hamburger,
-    .nav__icon--instagram {
-        width: 40px;
+    &__caption {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 10px;
     }
 }
+
