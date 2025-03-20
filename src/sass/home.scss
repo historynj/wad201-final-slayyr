@@ -1,5 +1,5 @@
-@use '_variables' as *;
-@use 'contact';
+@use "_variables" as *;
+@use "contact";
 
 section {
   padding: 6rem 0;
@@ -26,7 +26,7 @@ section {
   text-align: center;
 
   h1 {
-    font-family: 'Juliette';
+    font-family: "Juliette";
     font-size: 8vw;
     font-weight: 100;
   }
@@ -135,7 +135,7 @@ section {
         &__handwriting {
           display: inline-block;
           font-size: 2rem;
-          font-family: 'juliette', serif;
+          font-family: "juliette", serif;
           transform: rotate(-15deg);
         }
       }
@@ -149,14 +149,14 @@ section {
       gap: 1rem;
       padding: 4rem 0;
       font-size: 1.25rem;
-      font-family: 'Figtree', sans-serif;
+      font-family: "Figtree", sans-serif;
       letter-spacing: 1px;
       color: $dark-grey;
       white-space: pre;
 
       &::before,
       &::after {
-        content: '';
+        content: "";
         display: block;
         width: 100%;
         border-bottom: 1px solid $mid-grey;
@@ -172,8 +172,8 @@ section {
 
       li {
         width: 140px;
-        filter: invert(44%) sepia(98%) saturate(18%) hue-rotate(5deg) brightness(96%)
-          contrast(86%);
+        filter: invert(44%) sepia(98%) saturate(18%) hue-rotate(5deg)
+          brightness(96%) contrast(86%);
 
         &.sm {
           width: 100px;
@@ -217,16 +217,16 @@ section {
       justify-content: space-between;
       align-items: center;
       gap: 8px;
-      
+
       h6 {
         display: flex;
         margin-bottom: 1rem;
         font-size: 1.875rem;
 
         &::before {
-          content: '';
+          content: "";
           display: block;
-          @include bg-image('../images/icons/badge.png');
+          @include bg-image("../images/icons/badge.png");
           flex-shrink: 0;
           width: 1.75rem;
           height: 1.75rem;
@@ -259,7 +259,7 @@ section {
     flex-shrink: 0;
 
     &::after {
-      content: '';
+      content: "";
       outline: 1px solid $white;
       outline-offset: -1rem;
       width: 100%;
@@ -317,7 +317,7 @@ section {
         &__label {
           flex-shrink: 0;
           display: block;
-          font-family: 'Baskervville', serif;
+          font-family: "Baskervville", serif;
         }
       }
     }
@@ -356,7 +356,7 @@ section {
   }
 
   .view-class::before {
-    content: 'ViewClass';
+    content: "ViewClass";
     font-size: 0.8rem;
   }
 
@@ -365,9 +365,164 @@ section {
     min-width: unset;
     max-width: unset;
   }
-  .btn {
-    margin: 0 auto;
-    display: block;
+}
+.makehair {
+  width: 100%;
+  max-width: $tablet;
+  margin: 0 auto;
+  padding: 40px;
+
+  &__info {
     width: 100%;
+    @include flex-vertical(0, center);
+
+    &__title {
+      width: 50rem;
+    }
+
+    &__discreption {
+      width: 30rem;
+      text-align: center;
+      font-size: 1rem;
+      color: $black;
+
+      @media (max-width: $mobile) {
+        width: 100%;
+      }
+    }
+
+    &__btn {
+      margin-block: 3rem;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      gap: 32px;
+
+      .item--wedding {
+        order: 1;
+      }
+
+      .item--party {
+        order: 2;
+      }
+
+      .item--photoshoot {
+        order: 3;
+      }
+    }
+
+    &__item {
+      width: 100%;
+      position: relative;
+
+      &__img {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+
+        @media (min-width: $mobile) {
+          &.img--wedding {
+            width: 85%;
+          }
+
+          &.img--party,
+          &.img--photoshoot {
+            width: 65%;
+
+            &:hover {
+              width: 85%;
+
+              & + .caption--party,
+              & + .caption--photoshoot {
+                font-size: 5vw;
+                left: -3%;
+              }
+              .effect {
+                position: absolute;
+                width: 85%;
+                height: 100%;
+                border: 1px solid $accent;
+                top: -5%;
+                right: 1%;
+                z-index: -1;
+              }
+            }
+          }
+        }
+
+        @media (min-width: $mobile) {
+          &__effect--wedding {
+            position: absolute;
+            width: 85%;
+            height: 100%;
+            border: 1px solid $accent;
+            top: -5%;
+            right: 1%;
+            z-index: -1;
+          }
+        }
+      }
+
+      &__caption {
+        font-family: "Baskervville";
+        color: $light-pink;
+        display: block;
+        position: absolute;
+        bottom: 10%;
+
+        @media (max-width: $mobile) {
+          color: $pale-white;
+        }
+
+        &::first-letter {
+          color: $dark-pink;
+
+          @media (max-width: $mobile) {
+            color: $pale-white;
+          }
+        }
+
+        &.caption--wedding {
+          font-size: 5vw;
+          left: -9%;
+
+          @media (max-width: $mobile) {
+            font-size: 12vw;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 5%;
+          }
+        }
+
+        &.caption--party,
+        &.caption--photoshoot {
+          left: 10%;
+          font-size: 3.5vw;
+
+          @media (max-width: $mobile) {
+            font-size: 12vw;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 5%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .makehair .makehair__info__title {
+    width: 100%;
+    font-size: 2.5rem;
+    letter-spacing: 4px;
   }
 }

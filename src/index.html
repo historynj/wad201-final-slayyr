@@ -119,31 +119,40 @@
         </div>
       </div>
     </section>
-    <section>
-      <div>
-        <h2>Makeup & hairstyle</h2>
+    <section class="makehair">
+      <div class="makehair__info">
+        <h2 class="makehair__info__title">Makeup & hairstyle</h2>
         <hr />
-        <p>
+        <p class="makehair__info__discreption">
           We offer fully customizable plan to meet your unique requirements.
         </p>
-        <button class="btn">Get a Quote</button>
+        <a class="btn makehair__info__btn" href="./contact.html">Get a Quote</a>
       </div>
-      <ul>
-        <li>
-          <img src="./images/home/party.png" alt="Woman with makeup" />
-          <span>Party</span>
+      <ul class="makehair__list">
+        <li class="makehair__list__item item--party">
+          <div class="makehair__list__item__img img--party">
+            <img src="./images/home/party.png" alt="Woman with makeup" />
+
+            <div class="effect"></div>
+          </div>
+          <span class="makehair__list__item__caption caption--party">Party</span>
         </li>
-        <li class="line-point">
-          <img src="./images/home/wedding.png" alt="Woman with makeup" />
-          <span>Wedding</span>
+        <li class="makehair__list__item item--wedding">
+          <div class="makehair__list__item__img img--wedding">
+            <img src="./images/home/wedding.png" alt="Woman with makeup" />
+            <div class="makehair__list__item__img__effect--wedding"></div>
+          </div>
+          <span class="makehair__list__item__caption caption--wedding">Wedding</span>
         </li>
-        <li>
-          <img src="./images/home/photoshoot.png" alt="Woman with makeup" />
-          <span>Photoshoot</span>
+        <li class="makehair__list__item item--photoshoot">
+          <div class="makehair__list__item__img img--photoshoot">
+            <img src="./images/home/photoshoot.png" alt="Woman with makeup" />
+            <div class="effect"></div>
+          </div>
+          <span class="makehair__list__item__caption caption--photoshoot">Photoshoot</span>
         </li>
       </ul>
     </section>
-
     <section class="makeup101">
       <h2 class="makeup101__title">Make up 101</h2>
       <div class="makeup101__content flex">
@@ -238,7 +247,6 @@
     </section>
   </main>
   <!-- Footer loaded by script.js -->
-
   <script type="text/javascript" src="./js/script.js"></script>
   <script type="text/javascript" src="./js/contact.js"></script>
 </body>
