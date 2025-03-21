@@ -1,0 +1,52 @@
+@use "_variables" as *;
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.invisiable {
+  visibility: hidden;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.no-scroll {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.bg-black {
+  background-color: $black;
+}
+
+.bg-black {
+  background-color: $black;
+}
+
+.desktop-hidden {
+  display: none;
+}
+
+@media (max-width: $mobile) {
+  .flex {
+    flex-direction: column;
+  }
+
+  .mobile-hidden {
+    display: none !important;
+  }
+
+  .desktop-hidden {
+    display: block;
+  }
+}

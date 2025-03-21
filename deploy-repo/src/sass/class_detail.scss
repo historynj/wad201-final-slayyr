@@ -1,0 +1,215 @@
+@use '_variables' as *;
+
+.title {
+  text-align: center;
+  display: block;
+  padding: $page-padding;
+  max-width: $page-width;
+  margin: 0 auto;
+}
+
+.title__1 {
+  font-size: 80px;
+  font-weight: 400;
+  color: #725a58;
+  font-family: "Baskervville", serif;
+}
+
+.content {
+  background-color: #fae9e7;
+}
+
+.content-wrapper {
+  padding: 3rem $page-padding;
+  justify-content: center;
+  gap: 3rem;
+  max-width: $page-width;
+  margin: 0 auto;
+}
+
+.card {
+  border: 1px solid $dark-pink;
+  width: 360px;
+  height: fit-content;
+  background: transparent;
+  padding: 0;
+  flex-shrink: 0;
+  position: relative;
+
+  &__image {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: "Baskervville", serif;
+  }
+
+  &__info {
+    padding: 20px;
+  }
+}
+
+.text-content {
+  @include flex-vertical(4rem);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.info-text {
+  font-size: 1rem;
+  color: #555;
+  font-family: "Figtree", sans-serif;
+}
+
+.btn {
+  width: 100%;
+}
+
+.overview {
+  &__title {
+    color: #725a58;
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-family: "Baskervville", serif;
+  }
+
+  &__text {
+    max-width: 700px;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    font-family: "Figtree", sans-serif;
+  }
+}
+
+.curriculum {
+  &__title {
+    font-size: 36px;
+    color: #725a58;
+    margin-bottom: 20px;
+    font-family: "Baskervville", serif;
+  }
+
+  &__subtitle {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: "Baskervville", serif;
+  }
+
+  &__list {
+    list-style-type: disc;
+    margin: 20px 0 40px 20px;
+  }
+
+  &__list li {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    font-family: "Figtree", sans-serif;
+  }
+}
+
+.back-to-classes {
+  font-family: "Baskervville", serif;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: $page-width;
+  margin: 0 auto;
+
+  &::before {
+    @include bg-image('../images/icons/chevron-left.png');
+    content: '';
+    display: block;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .title {
+    text-align: left;
+  }
+
+  .title__1 {
+    font-size: 40px;
+    margin-bottom: 32px;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .content-wrapper {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 3rem;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column-reverse;
+    border: 0;
+    width: 100%;
+    margin: 0;
+    max-width: none;
+
+    &__image {
+      width: calc(100% + 2 * $page-padding);
+      margin-left: calc(-1 * $page-padding);
+    }
+
+    &__title {
+      display: none;
+    }
+
+    &__info {
+      padding: 0;
+    }
+  }
+
+  .info-item {
+    margin-bottom: 18px;
+  }
+
+  .btn {
+    margin-top: 15px;
+  }
+
+  .text-content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .overview__title,
+  .curriculum__title {
+    font-size: 28px;
+  }
+
+  .curriculum__subtitle {
+    font-size: 20px;
+  }
+
+  .curriculum__list {
+    margin-left: 15px;
+  }
+
+  .curriculum__list li {
+    font-size: 0.9rem;
+  }
+}

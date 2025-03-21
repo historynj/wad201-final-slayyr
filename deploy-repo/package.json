@@ -1,0 +1,30 @@
+{
+  "name": "final-project-slayyr",
+  "version": "1.0.0",
+  "description": "**Objective:**",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "sass -w src/sass:src/css",
+    "build": "sass src/sass:src/css",
+    "live": "live-server src --verbose",
+    "dev": "concurrently \"npm run build:css\" \"npm run live\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cornerstone-CICCC/final-project-slayyr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Cornerstone-CICCC/final-project-slayyr/issues"
+  },
+  "homepage": "https://github.com/Cornerstone-CICCC/final-project-slayyr#readme",
+  "dependencies": {
+    "sass": "^1.85.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "live-server": "^1.2.2"
+  }
+}

@@ -1,0 +1,51 @@
+@use "_variables" as *;
+
+.message {
+  position: fixed;
+  right: 0;
+  bottom: 12vh;
+  z-index: 5;
+
+  &__item {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+
+    &.invisiable {
+      opacity: 0;
+    }
+
+    button,
+    a {
+      padding: 0.625rem;
+    }
+
+    &--instagram {
+      background-color: #c13ed4;
+    }
+
+    &--call {
+      background-color: #6aa2ba;
+    }
+
+    &--whatsapp {
+      background-color: #25d366;
+    }
+
+    &--message {
+      background-color: $dark-pink;
+    }
+
+    &--x {
+      background-color: $black;
+      button,
+      a {
+        padding: 1rem;
+      }
+    }
+  }
+}

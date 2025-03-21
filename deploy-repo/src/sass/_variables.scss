@@ -1,0 +1,67 @@
+// colors
+$black: #191919;
+$primary: #725A58;
+$accent: #E3B6B1;
+$light-pink: #FAE9E7;
+$pale-white: #F8F6F4;
+$paper-white: #FBFAFA;
+$white: #FFFFFF;
+$mid-grey: #A3A3A3;
+$dark-grey: #535353;
+$dark-pink: #B99692;
+$brown: #A06D67;
+
+// layout
+$page-width: 1080px;
+$page-padding: 1rem;
+
+// breakpoints
+$mobile: 640px;
+$tablet: 1280px;
+
+// mixins
+@mixin flex-vertical($gap: 0, $align: center) {
+    display: flex;
+    flex-direction: column;
+    align-items: $align;
+    gap: $gap;
+}
+
+@mixin bg-image($url, $size: 100% auto, $position: center) {
+    background-image: url($url);
+    background-size: $size;
+    background-repeat: no-repeat;
+    background-position: $position;
+}
+// font
+
+// Fontes
+$font-primary: "Baskervville", serif;
+$font-secondary: "Figtree", sans-serif;
+
+// font sizes
+$font-size-h1-cap: 80px;
+$font-size-h1: 80px;
+$font-size-h2: 68px;
+$font-size-h3: 48px;
+$font-size-h4-cap: 40px;
+$font-size-h4: 36px;
+$font-size-h5: 32px;
+$font-size-h6: 24px;
+$font-size-button: 20px;
+$font-size-button-small: 18px;
+$font-size-body: 16px;
+$font-size-body-small: 14px;
+$font-size-caption: 14px;
+
+//line-height
+$line-height-h1: 130px;
+$line-height-h2: 100px;
+$line-height-h3: 130px;
+$line-height-h4: 120px;
+$line-height-h5: 130px;
+$line-height-h6: 130px;
+$line-height-button: 150px;
+$line-height-button-small: 150px;
+$line-height-body: 160px;
+$line-height-caption: 130px;
