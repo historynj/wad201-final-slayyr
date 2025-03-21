@@ -35,20 +35,24 @@ $text_font: Figtree;
 }
 
 .teachers {
+  width: 100%;
   background-color: #fae9e7;
-  display: flex;
-  flex-direction: column;
+
+  &__wrapper {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 3rem 0;
+    @include flex-vertical(6rem);
+  }
 
   &__teacher {
     display: flex;
-    margin-bottom: 40px;
+    gap: 2.5rem;
   }
 
   &__photo img {
-    width: 260px;
-    height: 370px;
-
-    margin: 30px 40px 0 68px;
+    width: 320px;
+    height: 500px;
   }
 }
 
@@ -57,7 +61,6 @@ $text_font: Figtree;
   flex-direction: column;
 
   &__title {
-    margin-top: 30px;
     font-weight: 400;
     font-size: 30px;
     color: #725a58;
@@ -79,11 +82,6 @@ $text_font: Figtree;
 .info-text {
   font-family: $text_font;
   font-size: 15px;
-}
-
-.info-item img {
-  width: 20px;
-  height: 20px;
 }
 
 .teacher-info {
@@ -146,6 +144,11 @@ $text_font: Figtree;
   }
 
   .teachers {
+    &__wrapper {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
     &__teacher {
       display: flex;
       flex-direction: column;
@@ -154,6 +157,7 @@ $text_font: Figtree;
         padding: 0 20px;
       }
     }
+
     &__photo {
       img {
         height: fit-content;
@@ -162,6 +166,7 @@ $text_font: Figtree;
       }
     }
   }
+
   .teacher {
     display: flex;
     align-items: flex-start;

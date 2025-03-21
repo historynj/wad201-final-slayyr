@@ -39,6 +39,7 @@ h6 {
 
 // components
 .btn {
+  display: inline-block;
   font-family: 'Baskervville', serif;
   padding: 1rem 2rem;
   font-size: 1.25rem;
@@ -64,6 +65,10 @@ h6 {
   }
 }
 
+a.btn {
+  text-align: center;
+}
+
 .line-point {
   position: relative;
 
@@ -85,12 +90,20 @@ h6 {
 }
 
 .icon {
+  img {
+    object-fit: contain;
+  }
+  
   &--sm {
     width: 32px;
   }
 
   &--xs {
     width: 24px;
+  }
+
+  &--2xs {
+    width: 18px;
   }
 }
 #mobile-nav {

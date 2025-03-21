@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             <span>Services</span>
         </a>
          <a href="./classes.html" class="nav__menu" ${
-           current.includes("/classes") ? "current" : ""
+           current.includes('/classes') ? 'current' : ''
          }>
             <span>Classes</span>
         </a>
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             <a id="services-page" href="./service.html">Services</a>
           </li>
           <li class="mobile-nav__item">
-            <a id="classses-page" href="./academy.html">Classes</a>
+            <a id="classses-page" href="./classes.html">Classes</a>
           </li>
           <li class="mobile-nav__item">
             <a id="beautytips-page" href="./beauty_tips.html">Beauty Tips</a>
@@ -186,8 +186,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             <li class="${current.includes('/service') ? 'current' : ''}">
                 <a href="./service.html">Services</a>
             </li>
-            <li class="${current.includes('/academy') ? 'current' : ''}">
-                <a href="./academy.html">Classes</a>
+            <li class="${current.includes('/classes') ? 'current' : ''}">
+                <a href="./classes.html">Classes</a>
             </li>
             <li class="${current.includes('/beauty_tips') ? 'current' : ''}">
                 <a href="./beauty_tips.html">Beauty Tips</a>

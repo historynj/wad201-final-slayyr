@@ -108,7 +108,7 @@ const formServiceStart = `
 </div>
 <button id="next-btn" type="button" class="btn" onclick="renderServiceNextForm()">Next</button>`;
 
-const formClassStart = `<div class="contact__form__tab">
+const formClassStart = (className) => `<div class="contact__form__tab">
     <input id="contact-service" type="radio" name="contact-type" value="contact-service" hidden onchange="changeType(this)" />
     <label for="contact-service">Services</label>
     <input id="contact-classes" type="radio" name="contact-type" value="contact-classes" checked hidden onchange="changeType(this)" />
@@ -118,11 +118,11 @@ const formClassStart = `<div class="contact__form__tab">
     <div>
         <label>Class</label>
         <div class="input--select flex">
-            <input id="class-type-1on1" type="radio" name="class-type" value="class-type-1on1" checked hidden />
+            <input id="class-type-1on1" type="radio" name="class-type" value="class-type-1on1" ${className ? className === '1on1' ? 'checked' : '' : 'checked'} hidden />
             <label for="class-type-1on1">1-on-1 Master Subscription</label>
-            <input id="class-type-1day" type="radio" name="class-type" valsue="class-type-1day" hidden />
+            <input id="class-type-1day" type="radio" name="class-type" valsue="class-type-1day" ${className ? className === '1day' ? 'checked' : '' : ''} hidden />
             <label for="class-type-1day">1-day Makeup workshop</label>
-            <input id="class-type-beginner" type="radio" name="class-type" value="class-type-beginner" hidden />
+            <input id="class-type-beginner" type="radio" name="class-type" value="class-type-beginner" ${className ? className === 'self' ? 'checked' : '' : ''} hidden />
             <label for="class-type-beginner">Self-Makeup beginner class</label>
         </div>
     </div>
@@ -174,8 +174,16 @@ const formClassStart = `<div class="contact__form__tab">
 <button type="subtmit" class="btn">Submit</button>`;
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form = renderServiceStartForm();
-  form.addEventListener("submit", submitContact);
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('type');
+    const className = urlParams.get('class');
+
+    const form = renderServiceStartForm();
+    form.addEventListener("submit", submitContact);
+
+    if (type === 'class') {
+        changeType('class', className);
+    }
 });
 
 function renderServiceStartForm() {
@@ -192,14 +200,14 @@ function renderServiceStartForm() {
   return form;
 }
 
-function changeType(target) {
+function changeType(target, className) {
   savedForm = {};
 
   const form = document.getElementById("contact-form");
   if (target.value === "contact-service") {
     form.innerHTML = formServiceStart;
   } else {
-    form.innerHTML = formClassStart;
+    form.innerHTML = formClassStart(className);
   }
 
   renderPhoneCountryCode();
@@ -212,8 +220,6 @@ async function renderPhoneCountryCode() {
   }
 
   const phoneCountrySelect = document.getElementById("phone-country-code");
-
-  console.log(phoneCountrySelect, phoneCountryCodeData);
 
   phoneCountryCodeData
     .toSorted((a, b) => a.dial_code - b.dial_code)
