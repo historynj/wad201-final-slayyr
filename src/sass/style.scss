@@ -72,6 +72,14 @@ a.btn {
 .line-point {
   position: relative;
 
+
+  @media (max-width: $mobile) {
+    .about__info__card__image,
+    .about__info__card__body {
+      transform: translate(-0.5rem, 0.5rem);
+    }
+  }
+
   &::before {
     $offset: 1.25rem;
     $mask: 0 $offset, calc(100% - $offset - 2px) $offset, calc(100% - $offset - 2px) 100%,
@@ -84,6 +92,9 @@ a.btn {
     height: 100%;
     border: 1px solid $accent;
     transform: translate($offset, calc(-1 * $offset));
+    @media (max-width: $mobile) {
+      transform: translate(0.5rem, calc(-1 * 0.5rem));
+    }
 
     clip-path: polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, $mask);
   }
@@ -111,20 +122,30 @@ a.btn {
   padding-top: 4rem;
   padding-bottom: 4rem;
 
+  h1, h2 {
+    line-height: 100%;
+    letter-spacing: 8px;
+  }
+
+
+  @media (max-width: $mobile) {
+    padding-top: 2rem !important;
+    padding-bottom: 4rem !important;
+  }
+
   h1 {
     font-size: 4.5rem;
+    @media (max-width: $mobile) {
+      font-size: 2.25rem;
+      letter-spacing: 4px;
+    }
   }
 
   h2 {
     font-size: 3.5rem;
-  }
-
-  h1, h2 {
-    line-height: 100%;
-    letter-spacing: 8px;
-
     @media (max-width: $mobile) {
-      font-size: 3rem;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
     }
   }
 }

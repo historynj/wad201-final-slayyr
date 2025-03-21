@@ -218,7 +218,7 @@ function changeType(target, className) {
 
   const form = document.getElementById('contact-form');
   if (target.value === 'contact-service') {
-    form.innerHTML = formServiceStart;
+    form.innerHTML = formServiceStart();
   } else {
     form.innerHTML = formClassStart(className);
   }
@@ -587,7 +587,7 @@ function submitContact(e) {
         <label for="contact-classes">Classes</label>
     </div>
     <div class="contact__complete__message">
-        <h3 class="contact__complete__message__title">Thanks Janny,<br />we will contact you soon!</h3>
+        <h3 class="contact__complete__message__title">Thanks ${savedForm.name || 'dear customer'},<br />we will contact you soon!</h3>
         <p>We will call +1-123-4567-890 to confirm the appointment details with you.</p>
         <div class="contact__complete__message__edit">Edit Details</div>
     </div>
@@ -720,7 +720,7 @@ function submitContact(e) {
     <label for="contact-classes">Classes</label>
 </div>
 <div class="contact__complete__message">
-    <h3 class="contact__complete__message__title">Thanks Janny,<br />we will contact you soon!</h3>
+    <h3 class="contact__complete__message__title">Thanks ${savedForm.name || 'dear customer'},<br />we will contact you soon!</h3>
     <p>We will call +1-0000000000 to get back to your enquiry</p>
 </div>
 <div class="contact__complete__info contact__complete__info--classes">
@@ -728,7 +728,7 @@ function submitContact(e) {
         <img src="./images/home/form-complete.png" alt="Photo of makeup products" />
     </div>
     <div class="contact__complete__info__footer contact__complete__info__footer--classes">
-        <p>Talk soon Janny :)</p>
+        <p>Talk soon ${savedForm.name || 'dear customer'} :)</p>
         <ul>
             <li>
                 <a href="tel:+00000000000">

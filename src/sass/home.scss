@@ -1,5 +1,5 @@
-@use "_variables" as *;
-@use "contact";
+@use '_variables' as *;
+@use 'contact';
 
 section {
   padding: 6rem $page-padding;
@@ -26,7 +26,7 @@ section {
   text-align: center;
 
   h1 {
-    font-family: "Juliette";
+    font-family: 'Juliette';
     font-size: 8vw;
     font-weight: 100;
   }
@@ -38,10 +38,10 @@ section {
     bottom: 0;
     width: 100%;
     height: 100%;
-    padding: 0 2rem;
+    padding: 0 $page-padding;
     background: linear-gradient(
       178.04deg,
-      rgba(0, 0, 0, 0) 16.58%,
+      rgba(0, 0, 0, 0) 40%,
       rgba(0, 0, 0, 0.8) 102.45%
     );
     padding-top: 15vw;
@@ -135,7 +135,7 @@ section {
         &__handwriting {
           display: inline-block;
           font-size: 2rem;
-          font-family: "juliette", serif;
+          font-family: 'juliette', serif;
           transform: rotate(-15deg);
         }
       }
@@ -173,14 +173,14 @@ section {
       gap: 1rem;
       padding: 4rem 0;
       font-size: 1.25rem;
-      font-family: "Figtree", sans-serif;
+      font-family: 'Figtree', sans-serif;
       letter-spacing: 1px;
       color: $dark-grey;
       white-space: pre;
 
       &::before,
       &::after {
-        content: "";
+        content: '';
         display: block;
         width: 100%;
         border-bottom: 1px solid $mid-grey;
@@ -196,8 +196,8 @@ section {
 
       li {
         width: 140px;
-        filter: invert(44%) sepia(98%) saturate(18%) hue-rotate(5deg)
-          brightness(96%) contrast(86%);
+        filter: invert(44%) sepia(98%) saturate(18%) hue-rotate(5deg) brightness(96%)
+          contrast(86%);
 
         &.sm {
           width: 100px;
@@ -277,13 +277,15 @@ section {
   text-align: center;
   margin: 0 auto;
   width: 90%;
-  h5 {
+  p {
     display: none;
     font-size: 18px;
     padding: 20px 0;
+    font-family: 'Baskervville', serif;
+    color: $black;
   }
 
-  h5.active {
+  p.active {
     display: block;
   }
 }
@@ -297,18 +299,12 @@ section {
   span {
     font-size: 1rem;
     display: none;
-    font-family: "juliette", sans-serif;
+    font-family: 'juliette', sans-serif;
 
     &.active {
       display: inline;
     }
   }
-  
-}
-
-@font-face {
-  font-family: "juliette";
-  src: url("../fonts/juliette.otf") format("truetype");
 }
 
 // Make up 101 section
@@ -348,9 +344,9 @@ section {
         font-size: 1.875rem;
 
         &::before {
-          content: "";
+          content: '';
           display: block;
-          @include bg-image("../images/icons/badge.png");
+          @include bg-image('../images/icons/badge.png');
           flex-shrink: 0;
           width: 1.75rem;
           height: 1.75rem;
@@ -383,7 +379,7 @@ section {
     flex-shrink: 0;
 
     &::after {
-      content: "";
+      content: '';
       outline: 1px solid $white;
       outline-offset: -1rem;
       width: 100%;
@@ -394,22 +390,16 @@ section {
   }
 }
 
-.btn {
-  display: block;
-  margin: 0 right;
-}
-
-.makeup-img {
-  width: 50px;
-  height: 30px;
-}
-
-@media (max-width: 960px) {
+@media (max-width: $mobile) {
   .makeup101 {
     margin: 0;
     padding: 0 $page-padding;
     padding-top: 3rem;
     width: 100%;
+
+    .btn {
+      width: 100%;
+    }
 
     &__content {
       flex-direction: column;
@@ -439,7 +429,7 @@ section {
         &__label {
           flex-shrink: 0;
           display: block;
-          font-family: "Baskervville", serif;
+          font-family: 'Baskervville', serif;
         }
       }
     }
@@ -478,7 +468,7 @@ section {
   }
 
   .view-class::before {
-    content: "ViewClass";
+    content: 'ViewClass';
     font-size: 0.8rem;
   }
 
@@ -596,7 +586,7 @@ section {
       }
 
       &__caption {
-        font-family: "Baskervville";
+        font-family: 'Baskervville';
         color: $light-pink;
         display: block;
         position: absolute;
@@ -649,4 +639,100 @@ section {
     font-size: 2.5rem;
     letter-spacing: 4px;
   }
+}
+
+//DIY CAROUSEL
+.diy {
+  h2:first-child {
+    text-transform: none;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  max-width: 936px;
+  margin: 0 auto;
+  @include flex-vertical(2rem);
+}
+
+.swiper-content {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 100%;
+
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    padding: 16px;
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-family: 'Baskervville', serif;
+    font-weight: 400;
+    font-style: normal;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        178.04deg,
+        rgba(0, 0, 0, 0) 40%,
+        rgba(0, 0, 0, 0.7) 102.45%
+      );
+      z-index: 1;
+    }
+
+    p {
+      font-family: 'Figtree', sans-serif;
+      font-weight: 100;
+      position: absolute;
+      bottom: 16px;
+      z-index: 5;
+    }
+  }
+
+  .play-button {
+    margin-top: 0;
+    padding-top: 15px;
+    padding-right: 15px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.btn-wrapper {
+  text-align: center;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 50px;
+
+  a {
+    width: fit-content;
+  }
+}
+
+.swiper {
+  width: 100%;
+  padding-bottom: 30px;
+  height: 292px;
 }

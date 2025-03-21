@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carla Beauty</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 </head>
 
 <body id="body">
@@ -107,21 +108,21 @@
         <img src="./images/icons/quote.png" alt="quote" />
       </div>
       <div class="testinominals">
-        <h5>
+        <p>
           Carla is the best! She made me the night's brightest star! She
           stayed with me the whole wedding ensuring I always looked and felt
           wonderful!!
-        </h5>
-        <h5>
+        </p>
+        <p>
           Carla Beauty's makeup for my photoshoot was outstanding! Their
           expertise and attention to detail made me look perfect in every
           shot. Highly recommend!
-        </h5>
-        <h5>
+        </p>
+        <p>
           Carla Beauty's party makeup service was amazing! The makeup lasted
           all night, keeping me flawless until the end. Thank you, Carla for
           an unforgettable experience!
-        </h5>
+        </p>
         <div class="testinominals__buttons">
           <button id="testinominals-prev">
             <img src="./images/icons/chevron-left.png" alt="Go prev" />
@@ -224,32 +225,42 @@
         </div>
       </div>
     </section>
-    <section>
+    <section class="diy">
       <h2>DIY Beauty Corner</h2>
-      <ul>
-        <li>
-          <img src="./images/home/diy-1.jpeg" alt="Woman with makeup" />
-          <button>
-            <img src="./images/icons/play.png" alt="Play" />
-          </button>
-          <p>✨Make up ✨ Be a queen in...</p>
-        </li>
-        <li>
-          <img src="./images/home/diy-2.jpeg" alt="Woman with makeup" />
-          <button>
-            <img src="./images/icons/play.png" alt="Play" />
-          </button>
-          <p>Produce a beautiful bride ✨...</p>
-        </li>
-        <li>
-          <img src="./images/home/diy-3.jpeg" alt="Woman with makeup" />
-          <button>
-            <img src="./images/icons/play.png" alt="Play" />
-          </button>
-          <p>How to do stunning hair in 3min</p>
-        </li>
-      </ul>
-      <button class="btn">More Beauty Tips</button>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="swiper-content">
+              <img src="./images/beauty-images/1st.jpeg" alt="Hair Tutorial">
+              <div class="overlay">
+                <p>How to do stunning hair in 3...</p>
+                <img class="play-button" src="./images/beauty-images/play-button.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="swiper-content">
+              <img src="./images/beauty-images/2nd.png" alt="Bride Makeup">
+              <div class="overlay">
+                <p>Produce a beautiful bride ✨</p>
+                <img class="play-button" src="./images/beauty-images/play-button.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="swiper-content">
+              <img src="./images/beauty-images/3rd.png" alt="Photoshoot Makeup">
+              <div class="overlay">
+                <p>Make up for photoshoot 📸✨</p>
+                <img class="play-button" src="./images/beauty-images/play-button.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn-wrapper">
+        <a class="btn" href="./beauty_tips.html">More Beauty Tips</a>
+      </div>
     </section>
     <section id="contact" class="contact">
       <h2>Let's Talk</h2>
@@ -266,5 +277,8 @@
   <script type="text/javascript" src="./js/script.js"></script>
   <script type="text/javascript" src="./js/contact.js"></script>
   <script type="text/javascript" src="./js/testinominals.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="text/javascript" src="./js/carousel.js"></script>
 </body>
+
 </html>

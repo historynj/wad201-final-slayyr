@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-    // get current path for nav current styling
-    const current = window.location.pathname;
-    console.log(current, current.includes('/service'));
+  // get current path for nav current styling
+  const current = window.location.pathname;
 
   // render nav;
   const body = document.getElementById('body');
@@ -223,7 +222,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   navList.forEach((page) => {
     page.addEventListener('click', function () {
-      console.log('Clicked');
       mobileNav.classList.add('close');
     });
   });

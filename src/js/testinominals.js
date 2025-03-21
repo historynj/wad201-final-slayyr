@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const reviews = document.querySelectorAll(".testinominals h5");
+  const reviews = document.querySelectorAll(".testinominals p");
   const names = document.querySelectorAll(".testinominals__buttons span");
   const prevBtn = document.getElementById("testinominals-prev");
   const nextBtn = document.getElementById("testinominals-next");
