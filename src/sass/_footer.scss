@@ -38,6 +38,7 @@
             display: flex;
             justify-content: center;
             padding: 0 1rem;
+            text-align: center;
 
             &.current a {
                 border-bottom: $line;

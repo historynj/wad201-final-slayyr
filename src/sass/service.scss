@@ -14,10 +14,8 @@ body {
   text-align: center;
   h1 {
     font-size: $font-size-h1-cap;
-    line-height: $line-height-h1;
     font-family: $font-primary;
     letter-spacing: 13px;
-    line-height: 130px;
     font-weight: 400;
     color: $primary;
   }
@@ -109,11 +107,6 @@ body {
     h1 {
       font-size: 40px;
       letter-spacing: 0.1;
-    }
-    hr {
-      width: 200px;
-      margin: 2px auto;
-      border: 1px solid $accent;
     }
   }
 

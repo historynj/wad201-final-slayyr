@@ -1,8 +1,7 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-  // get current path for nav current styling
-  const currentRaw = window.location.pathname;
-  const currentList = currentRaw.split('src');
-  const current = currentList.length > 1 ? currentList[1] : currentRaw;
+document.addEventListener("DOMContentLoaded", (event) => {
+    // get current path for nav current styling
+    const current = window.location.pathname;
+    console.log(current, current.includes('/service'));
 
   // render nav;
   const body = document.getElementById('body');
@@ -21,14 +20,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }">
             <span>My Work</span>
         </a>
-        <a href="./service.html" class="nav__menu" ${
+        <a href="./service.html" class="nav__menu ${
           current.includes('/service') ? 'current' : ''
-        }>
+        }">
             <span>Services</span>
         </a>
-         <a href="./classes.html" class="nav__menu" ${
+         <a href="./classes.html" class="nav__menu ${
            current.includes('/classes') ? 'current' : ''
-         }>
+         }">
             <span>Classes</span>
         </a>
         <a href="/" class="nav__logo">
@@ -178,7 +177,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         </div>
         <ul class="footer__nav">
             <li class="${current === '/' ? 'current' : ''}">  
-                <a href="#">Home</a>
+                <a href="/">Home</a>
             </li>
             <li class="${current.includes('/portfolio') ? 'current' : ''}">
                 <a href="./portfolio.html">My Work</a>

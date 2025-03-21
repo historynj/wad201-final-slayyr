@@ -11,7 +11,6 @@ $text_font: Figtree;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 60px;
 
   &__divider {
     background-color: #e3b6b1;
@@ -124,8 +123,6 @@ $text_font: Figtree;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 60px;
-    margin-right: 25px;
 
     &__title {
       margin-top: 30px;

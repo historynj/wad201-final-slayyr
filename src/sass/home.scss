@@ -1,10 +1,8 @@
 @use "_variables" as *;
 @use "contact";
 
-$padding: 1rem;
-
 section {
-  padding: 6rem $padding;
+  padding: 6rem $page-padding;
   scroll-margin-top: 100px;
 
   h2:first-child {
@@ -409,7 +407,7 @@ section {
 @media (max-width: 960px) {
   .makeup101 {
     margin: 0;
-    padding: 0 $padding;
+    padding: 0 $page-padding;
     padding-top: 3rem;
     width: 100%;
 
@@ -447,7 +445,7 @@ section {
     }
 
     &__image {
-      width: calc(100% + $padding * 2);
+      width: calc(100% + $page-padding * 2);
     }
   }
 
@@ -490,6 +488,8 @@ section {
     max-width: unset;
   }
 }
+
+// Makeup & Hairstyle
 .makehair {
   width: 100%;
   max-width: $tablet;

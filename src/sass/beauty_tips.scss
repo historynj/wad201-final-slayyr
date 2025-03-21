@@ -6,6 +6,7 @@
 }
 
 .title {
+    padding: 0 $page-padding;
     color: $primary;
     font-size: 100px;
     margin-bottom: 0px;
@@ -137,7 +138,7 @@
         }
 
 /* MOBILE VIEW */
-@media only screen and (max-width: 649px) and (max-height: 811px) {
+@media (max-width: $mobile) {
     .beauty-tips {
         background-color: $pale-white;
         padding-bottom: 50px

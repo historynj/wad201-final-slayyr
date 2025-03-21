@@ -2,17 +2,17 @@ let savedForm = {};
 let phoneCountryCodeData = [];
 
 const premiumServices = {
-  "premium-service-cleansing": "Deep skin cleansing",
-  "premium-service-bleach": "Bleach body hair",
-  "premium-service-hydromassage": "Hydromassage",
-  "premium-service-moisture": "Hair Moisture",
-  "premium-service-waxing": "Waxing",
-  "premium-service-spa": "Foot and hand SPA",
-  "premium-service-relaxing": "Relaxing massage",
-  "premium-service-gommage": "Gommage (body exfoliation and hydration)",
+  'premium-service-cleansing': 'Deep skin cleansing',
+  'premium-service-bleach': 'Bleach body hair',
+  'premium-service-hydromassage': 'Hydromassage',
+  'premium-service-moisture': 'Hair Moisture',
+  'premium-service-waxing': 'Waxing',
+  'premium-service-spa': 'Foot and hand SPA',
+  'premium-service-relaxing': 'Relaxing massage',
+  'premium-service-gommage': 'Gommage (body exfoliation and hydration)',
 };
 
-const formServiceStart = `
+const formServiceStart = (serviceName) => `
 <div class="contact__form__tab">
     <input id="contact-service" type="radio" name="contact-type" value="contact-service" checked hidden onchange="changeType(this)" />
     <label for="contact-service">Services</label>
@@ -23,11 +23,17 @@ const formServiceStart = `
     <div>
         <label>Event Type</label>
         <div class="input--select flex">
-            <input id="event-type-wedding" type="radio" name="event-type" value="event-type-wedding" checked hidden onchange="changeSubmitBtn()" />
+            <input id="event-type-wedding" type="radio" name="event-type" value="event-type-wedding" ${
+              serviceName ? (serviceName === 'wedding' ? 'checked' : '') : 'checked'
+            } hidden onchange="changeSubmitBtn()" />
             <label for="event-type-wedding">Wedding</label>
-            <input id="event-type-party" type="radio" name="event-type" value="event-type-party" hidden onchange="changeSubmitBtn()" />
+            <input id="event-type-party" type="radio" name="event-type" value="event-type-party"  ${
+              serviceName ? (serviceName === 'party' ? 'checked' : '') : ''
+            } hidden onchange="changeSubmitBtn()" />
             <label for="event-type-party">Party</label>
-            <input id="event-type-photoshoot" type="radio" name="event-type" value="event-type-photoshoot" hidden onchange="changeSubmitBtn()" />
+            <input id="event-type-photoshoot" type="radio" name="event-type" value="event-type-photoshoot" ${
+              serviceName ? (serviceName === 'photo' ? 'checked' : '') : ''
+            } hidden onchange="changeSubmitBtn()" />
             <label for="event-type-photoshoot">Photoshoot</label>
         </div>
     </div>
@@ -118,11 +124,17 @@ const formClassStart = (className) => `<div class="contact__form__tab">
     <div>
         <label>Class</label>
         <div class="input--select flex">
-            <input id="class-type-1on1" type="radio" name="class-type" value="class-type-1on1" ${className ? className === '1on1' ? 'checked' : '' : 'checked'} hidden />
+            <input id="class-type-1on1" type="radio" name="class-type" value="class-type-1on1" ${
+              className ? (className === '1on1' ? 'checked' : '') : 'checked'
+            } hidden />
             <label for="class-type-1on1">1-on-1 Master Subscription</label>
-            <input id="class-type-1day" type="radio" name="class-type" valsue="class-type-1day" ${className ? className === '1day' ? 'checked' : '' : ''} hidden />
+            <input id="class-type-1day" type="radio" name="class-type" valsue="class-type-1day" ${
+              className ? (className === '1day' ? 'checked' : '') : ''
+            } hidden />
             <label for="class-type-1day">1-day Makeup workshop</label>
-            <input id="class-type-beginner" type="radio" name="class-type" value="class-type-beginner" ${className ? className === 'self' ? 'checked' : '' : ''} hidden />
+            <input id="class-type-beginner" type="radio" name="class-type" value="class-type-beginner" ${
+              className ? (className === 'self' ? 'checked' : '') : ''
+            } hidden />
             <label for="class-type-beginner">Self-Makeup beginner class</label>
         </div>
     </div>
@@ -173,27 +185,28 @@ const formClassStart = (className) => `<div class="contact__form__tab">
 </div>
 <button type="subtmit" class="btn">Submit</button>`;
 
-document.addEventListener("DOMContentLoaded", () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const type = urlParams.get('type');
-    const className = urlParams.get('class');
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const type = urlParams.get('type');
+  const className = urlParams.get('class');
+  const serviceName = urlParams.get('service');
 
-    const form = renderServiceStartForm();
-    form.addEventListener("submit", submitContact);
+  const form = renderServiceStartForm(serviceName);
+  form.addEventListener('submit', submitContact);
 
-    if (type === 'class') {
-        changeType('class', className);
-    }
+  if (type === 'class') {
+    changeType('class', className);
+  }
 });
 
-function renderServiceStartForm() {
+function renderServiceStartForm(serviceName) {
   savedForm = {};
 
-  const form = document.getElementById("contact-form");
-  form.innerHTML = formServiceStart;
+  const form = document.getElementById('contact-form');
+  form.innerHTML = formServiceStart(serviceName);
 
-  const header = document.getElementById("contact-header");
-  header?.classList.remove("hidden");
+  const header = document.getElementById('contact-header');
+  header?.classList.remove('hidden');
 
   renderPhoneCountryCode();
 
@@ -203,8 +216,8 @@ function renderServiceStartForm() {
 function changeType(target, className) {
   savedForm = {};
 
-  const form = document.getElementById("contact-form");
-  if (target.value === "contact-service") {
+  const form = document.getElementById('contact-form');
+  if (target.value === 'contact-service') {
     form.innerHTML = formServiceStart;
   } else {
     form.innerHTML = formClassStart(className);
@@ -215,34 +228,34 @@ function changeType(target, className) {
 
 async function renderPhoneCountryCode() {
   if (!phoneCountryCodeData.length) {
-    const res = await fetch("../data/country-code.json");
+    const res = await fetch('../data/country-code.json');
     phoneCountryCodeData = await res.json();
   }
 
-  const phoneCountrySelect = document.getElementById("phone-country-code");
+  const phoneCountrySelect = document.getElementById('phone-country-code');
 
   phoneCountryCodeData
     .toSorted((a, b) => a.dial_code - b.dial_code)
     .forEach(({ dial_code }) => {
-      const option = document.createElement("option");
+      const option = document.createElement('option');
       option.value = dial_code;
       option.innerText = dial_code;
       phoneCountrySelect.appendChild(option);
     });
 
-  const header = document.getElementById("contact-header");
-  header?.classList.remove("hidden");
+  const header = document.getElementById('contact-header');
+  header?.classList.remove('hidden');
 }
 
 function renderServiceNextForm() {
-  const form = document.getElementById("contact-form");
+  const form = document.getElementById('contact-form');
 
   const formData = new FormData(form);
   for (const [key, val] of formData.entries()) {
     savedForm[key] = val;
   }
 
-  const eventType = formData.get("event-type");
+  const eventType = formData.get('event-type');
 
   const weddingOthers = `<li class="flex">
         <div class="contact__form__inputs__others__who">
@@ -375,9 +388,9 @@ function renderServiceNextForm() {
                 <div class="contact__form__inputs">
                     <div>
                         <label>${
-                          eventType === "event-type-wedding"
-                            ? "Bridal Service"
-                            : "Service"
+                          eventType === 'event-type-wedding'
+                            ? 'Bridal Service'
+                            : 'Service'
                         }</label>
                         <div class="input--select flex">
                             <input id="service-type-makeup" type="checkbox" name="service-type-checkbox" value="service-type-makeup"
@@ -447,7 +460,7 @@ function renderServiceNextForm() {
                         <label>Anyone else need service?</label>
                         <ul class="contact__form__inputs__others">
                             ${
-                              eventType === "event-type-wedding"
+                              eventType === 'event-type-wedding'
                                 ? weddingOthers
                                 : partyOthers
                             }
@@ -461,25 +474,25 @@ function renderServiceNextForm() {
                 <button type="submit" class="btn">Submit</button>
     `;
 
-  const header = document.getElementById("contact-header");
-  header.classList.add("hidden");
+  const header = document.getElementById('contact-header');
+  header.classList.add('hidden');
 }
 
 function changeSubmitBtn() {
-  const form = document.getElementById("contact-form");
-  const photoshoot = document.getElementById("event-type-photoshoot");
-  const nextBtn = document.getElementById("next-btn");
-  const submitBtn = document.getElementById("submit-btn");
+  const form = document.getElementById('contact-form');
+  const photoshoot = document.getElementById('event-type-photoshoot');
+  const nextBtn = document.getElementById('next-btn');
+  const submitBtn = document.getElementById('submit-btn');
 
   if (photoshoot.checked) {
     if (nextBtn) {
       form.removeChild(nextBtn);
 
-      const submitBtn = document.createElement("button");
-      submitBtn.classList.add("btn");
-      submitBtn.innerText = "Submit";
-      submitBtn.type = "submit";
-      submitBtn.id = "submit-btn";
+      const submitBtn = document.createElement('button');
+      submitBtn.classList.add('btn');
+      submitBtn.innerText = 'Submit';
+      submitBtn.type = 'submit';
+      submitBtn.id = 'submit-btn';
 
       form.appendChild(submitBtn);
     }
@@ -487,12 +500,12 @@ function changeSubmitBtn() {
     if (submitBtn) {
       form.removeChild(submitBtn);
 
-      const nextBtn = document.createElement("button");
-      nextBtn.classList.add("btn");
-      nextBtn.innerText = "Next";
-      nextBtn.type = "button";
-      nextBtn.id = "submit-btn";
-      nextBtn.addEventListener("click", renderServiceNextForm);
+      const nextBtn = document.createElement('button');
+      nextBtn.classList.add('btn');
+      nextBtn.innerText = 'Next';
+      nextBtn.type = 'button';
+      nextBtn.id = 'submit-btn';
+      nextBtn.addEventListener('click', renderServiceNextForm);
 
       form.appendChild(nextBtn);
     }
@@ -501,8 +514,8 @@ function changeSubmitBtn() {
 
 function changeQuantity(id, d) {
   const input = document.getElementById(id);
-  const display = document.getElementById(id + "-display");
-  const minusBtn = document.getElementById(id + "-minus");
+  const display = document.getElementById(id + '-display');
+  const minusBtn = document.getElementById(id + '-minus');
 
   const nextValue = parseInt(input.value) + d;
   const nextStr = nextValue.toString();
@@ -522,8 +535,8 @@ function submitContact(e) {
 
   const formData = new FormData(e.target);
   for (const [key, val] of formData.entries()) {
-    if (key.includes("checkbox") && savedForm[key]) {
-      savedForm[key] += "," + val;
+    if (key.includes('checkbox') && savedForm[key]) {
+      savedForm[key] += ',' + val;
     } else {
       savedForm[key] = val;
     }
@@ -532,42 +545,41 @@ function submitContact(e) {
   console.log(savedForm);
 
   const premium =
-    savedForm["premium-service-checkbox"]?.split(",").filter((item) => item) ||
-    [];
+    savedForm['premium-service-checkbox']?.split(',').filter((item) => item) || [];
 
-  const attendessGroom = parseInt(savedForm["groom-number"]);
-  const groomService = savedForm["others-groom-checkbox"]
-    ?.split(",")
+  const attendessGroom = parseInt(savedForm['groom-number']);
+  const groomService = savedForm['others-groom-checkbox']
+    ?.split(',')
     .filter((item) => item)
-    .map((item) => item.split("-")[item.split("-").length - 1]);
+    .map((item) => item.split('-')[item.split('-').length - 1]);
 
-  const attendessBridesmaid = parseInt(savedForm["bridesmaid-number"]);
-  const bridesmaidService = savedForm["others-bridesmaid-checkbox"]
-    ?.split(",")
+  const attendessBridesmaid = parseInt(savedForm['bridesmaid-number']);
+  const bridesmaidService = savedForm['others-bridesmaid-checkbox']
+    ?.split(',')
     .filter((item) => item)
-    .map((item) => item.split("-")[item.split("-").length - 1]);
+    .map((item) => item.split('-')[item.split('-').length - 1]);
 
-  const attendessFlowergirl = parseInt(savedForm["flowergirl-number"]);
-  const flowergirlService = savedForm["others-flowergirl-checkbox"]
-    ?.split(",")
+  const attendessFlowergirl = parseInt(savedForm['flowergirl-number']);
+  const flowergirlService = savedForm['others-flowergirl-checkbox']
+    ?.split(',')
     .filter((item) => item)
-    .map((item) => item.split("-")[item.split("-").length - 1]);
+    .map((item) => item.split('-')[item.split('-').length - 1]);
 
-  const attendessWoman = parseInt(savedForm["woman-number"]);
-  const womanService = savedForm["others-woman-checkbox"]
-    ?.split(",")
+  const attendessWoman = parseInt(savedForm['woman-number']);
+  const womanService = savedForm['others-woman-checkbox']
+    ?.split(',')
     .filter((item) => item)
-    .map((item) => item.split("-")[item.split("-").length - 1]);
+    .map((item) => item.split('-')[item.split('-').length - 1]);
 
-  const attendessMan = parseInt(savedForm["man-number"]);
-  const manService = savedForm["others-man-checkbox"]
-    ?.split(",")
+  const attendessMan = parseInt(savedForm['man-number']);
+  const manService = savedForm['others-man-checkbox']
+    ?.split(',')
     .filter((item) => item)
-    .map((item) => item.split("-")[item.split("-").length - 1]);
+    .map((item) => item.split('-')[item.split('-').length - 1]);
 
-  const form = document.getElementById("contact-form");
+  const form = document.getElementById('contact-form');
 
-  if (savedForm["contact-type"] === "contact-service") {
+  if (savedForm['contact-type'] === 'contact-service') {
     form.innerHTML = `<div class="contact__form__tab">
         <input id="contact-service" type="radio" name="contact-type" value="contact-service" hidden onchange="changeType(this)" checked />
         <label for="contact-service">Services</label>
@@ -607,68 +619,60 @@ function submitContact(e) {
                     <h5>Premium services</h5>
                     ${premium
                       .map((item) => `<li>- ${premiumServices[item]}</li>`)
-                      .join("")}
+                      .join('')}
                 </ul>
                 <ul id="additional-attendees-confirm">
                     <h5>Additional attendees</h5>
                     ${
                       attendessGroom
                         ? `<li>- Groom${
-                            attendessGroom > 1 ? ` * ${attendessGroom}` : ""
+                            attendessGroom > 1 ? ` * ${attendessGroom}` : ''
                           } ${
                             groomService.length
-                              ? `(${groomService.join(" + ")})</li>`
-                              : ""
+                              ? `(${groomService.join(' + ')})</li>`
+                              : ''
                           }`
-                        : ""
+                        : ''
                     }
                     ${
                       attendessBridesmaid
                         ? `<li>- Bridesmaid${
-                            attendessBridesmaid > 1
-                              ? ` * ${attendessBridesmaid}`
-                              : ""
+                            attendessBridesmaid > 1 ? ` * ${attendessBridesmaid}` : ''
                           } ${
                             bridesmaidService.length
-                              ? `(${bridesmaidService.join(" + ")})</li>`
-                              : ""
+                              ? `(${bridesmaidService.join(' + ')})</li>`
+                              : ''
                           }`
-                        : ""
+                        : ''
                     }
                     ${
                       attendessFlowergirl
                         ? `<li>- Flowergirl${
-                            attendessFlowergirl > 1
-                              ? ` * ${attendessFlowergirl}`
-                              : ""
+                            attendessFlowergirl > 1 ? ` * ${attendessFlowergirl}` : ''
                           } ${
                             flowergirlService.length
-                              ? `(${flowergirlService.join(" + ")})</li>`
-                              : ""
+                              ? `(${flowergirlService.join(' + ')})</li>`
+                              : ''
                           }`
-                        : ""
+                        : ''
                     }
                     ${
                       attendessWoman
                         ? `<li>- Woman${
-                            attendessWoman > 1 ? ` * ${attendessWoman}` : ""
+                            attendessWoman > 1 ? ` * ${attendessWoman}` : ''
                           } ${
                             womanService.length
-                              ? `(${womanService.join(" + ")})</li>`
-                              : ""
+                              ? `(${womanService.join(' + ')})</li>`
+                              : ''
                           }`
-                        : ""
+                        : ''
                     }
                     ${
                       attendessMan
-                        ? `<li>- Man${
-                            attendessMan > 1 ? ` * ${attendessMan}` : ""
-                          } ${
-                            manService.length
-                              ? `(${manService.join(" + ")})</li>`
-                              : ""
+                        ? `<li>- Man${attendessMan > 1 ? ` * ${attendessMan}` : ''} ${
+                            manService.length ? `(${manService.join(' + ')})</li>` : ''
                           }`
-                        : ""
+                        : ''
                     }
                 </ul>
             </div>
@@ -756,8 +760,8 @@ function submitContact(e) {
 `;
   }
 
-  const header = document.getElementById("contact-header");
-  header.classList.add("hidden");
+  const header = document.getElementById('contact-header');
+  header.classList.add('hidden');
 
   savedForm = {};
 }
